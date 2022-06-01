@@ -1,5 +1,6 @@
 <?php
-include 'config.php'
+include 'config.php';
+include 'functions.php';
 ?>
 <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
   <div class="container">
@@ -18,19 +19,7 @@ include 'config.php'
       <ul class="nav navbar-nav">
 
         <?php
-        $query = "SELECT * from categories";
-
-        $result = mysqli_query($conn, $query);
-
-
-        while ($row = mysqli_fetch_assoc($result)) {
-
-          $cat_title = $row['cat_title'];
-
-          echo "<li>";
-          echo "<a href='#'>" . $cat_title . "</a>";
-          echo "</li>";
-        }
+        categoriesFetch()
         ?>
 
       </ul>
