@@ -1,4 +1,10 @@
-<?php include 'include/functions.php' ?>
+<?php
+
+ob_start();
+
+include 'include/functions.php';
+include '../include/config.php';
+?>
 <!DOCTYPE html>
 <html lang="en">
 

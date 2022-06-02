@@ -22,7 +22,30 @@
               Welcome to admin
               <small>shadabdeveloper</small>
             </h1>
+          </div>
+          <?php insertCategory(); ?>
+          <div class="col-xs-6">
+            <form action="" method="POST">
+              <div class="form-group">
+                <label for="cat_title">Category Title</label>
+                <input type="text" name="cat_title" class="form-control" placeholder="Enter category name">
+              </div>
+              <div class="form-group">
+                <input class="btn btn-primary" type="submit" name="submit" value="Add Category">
+              </div>
+            </form>
 
+          </div>
+
+          <div class="col-xs-6">
+            <h4>Categories</h4>
+            <?php
+            if (isset($_GET['delete'])) {
+              deleteCategory();
+            }
+
+            fetchCategories();
+            ?>
           </div>
         </div>
         <!-- /.row -->

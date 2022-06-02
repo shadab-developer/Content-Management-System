@@ -47,9 +47,6 @@
         <a href="javascript:;" data-toggle="collapse" data-target="#categories"><i class="fa fa-fw fa-arrows-v"></i> Categories <i class="fa fa-fw fa-caret-down"></i></a>
         <ul id="categories" class="collapse">
           <li>
-            <a href="./add_category.php">Add Category</a>
-          </li>
-          <li>
             <a href="./categories.php">Categories</a>
           </li>
         </ul>
