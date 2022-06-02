@@ -36,22 +36,21 @@
         <a href="javascript:;" data-toggle="collapse" data-target="#post"><i class="fa fa-fw fa-arrows-v"></i> Posts <i class="fa fa-fw fa-caret-down"></i></a>
         <ul id="post" class="collapse">
           <li>
-            <a href="#">Add Post</a>
+            <a href="./add_post.php">Add Post</a>
           </li>
           <li>
-            <a href="#">Posts</a>
+            <a href="./posts.php">Posts</a>
           </li>
         </ul>
-      </li>
 
       <li>
         <a href="javascript:;" data-toggle="collapse" data-target="#categories"><i class="fa fa-fw fa-arrows-v"></i> Categories <i class="fa fa-fw fa-caret-down"></i></a>
         <ul id="categories" class="collapse">
           <li>
-            <a href="#">Add Category</a>
+            <a href="./add_category.php">Add Category</a>
           </li>
           <li>
-            <a href="#">Categories</a>
+            <a href="./categories.php">Categories</a>
           </li>
         </ul>
       </li>
@@ -60,15 +59,15 @@
         <a href="javascript:;" data-toggle="collapse" data-target="#users"><i class="fa fa-fw fa-arrows-v"></i> Users <i class="fa fa-fw fa-caret-down"></i></a>
         <ul id="users" class="collapse">
           <li>
-            <a href="#">Add User</a>
+            <a href="./add_user.php">Add User</a>
           </li>
           <li>
-            <a href="#">Users</a>
+            <a href="./users.php">Users</a>
           </li>
         </ul>
       </li>
       <li class="active">
-        <a href="blank-page.html"><i class="fa fa-fw fa-file"></i> Comments</a>
+        <a href="./comments.php"><i class="fa fa-fw fa-file"></i> Comments</a>
       </li>
     </ul>
   </div>
