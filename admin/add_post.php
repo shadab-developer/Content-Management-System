@@ -23,6 +23,18 @@
               <small>shadabdeveloper</small>
             </h1>
 
+            <div class="col-xs-10">
+              <form action="" method="POST">
+                <div class="form-group">
+                  <label for="post_title">Post Title</label>
+                  <input type="text" name="post_title" class="form-control">
+                </div>
+                <div class="form-group">
+                  <label for="post_attachment">Image</label>
+                  <input type="file" name="post_attachment" class="form-control">
+                </div>
+              </form>
+            </div>
           </div>
         </div>
         <!-- /.row -->

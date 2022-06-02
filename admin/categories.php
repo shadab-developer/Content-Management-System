@@ -35,14 +35,18 @@
               </div>
             </form>
 
+            <?php
+            editCategory();
+            ?>
+
           </div>
 
           <div class="col-xs-6">
             <h4>Categories</h4>
             <?php
-            if (isset($_GET['delete'])) {
-              deleteCategory();
-            }
+
+            deleteCategory();
+
 
             fetchCategories();
             ?>
