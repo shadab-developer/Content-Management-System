@@ -24,14 +24,57 @@
             </h1>
 
             <div class="col-xs-10">
-              <form action="" method="POST">
+              <?php
+
+              if (isset($_POST['submit'])) {
+
+
+                insertPost();
+              }
+
+
+              ?>
+              <form action="" method="POST" enctype="multipart/form-data">
                 <div class="form-group">
                   <label for="post_title">Post Title</label>
                   <input type="text" name="post_title" class="form-control">
                 </div>
                 <div class="form-group">
+                  <label for="post_category">Post Category</label>
+                  <select name="post_category" class="form-control" id="cars" multiple>
+
+                    <?php fetchCategory(); ?>
+
+                  </select>
+                  <p>Hold down the Ctrl (windows) or Command (Mac) button to select multiple options.</p>
+                </div>
+                <div class="form-group">
+                  <label for="post_status">Post Status</label>
+                  <select class="form-control" name="post_status">
+                    <option value='draft'>Draft</option>
+                    <option value='published'>Published</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label for="post_author">Post Author</label>
+                  <input type="text" name="post_author" class="form-control">
+                </div>
+                <div class="form-group">
                   <label for="post_attachment">Image</label>
                   <input type="file" name="post_attachment" class="form-control">
+                </div>
+                <div class="form-group">
+                  <label for="post_tags">Post tags</label>
+                  <input type="text" name="post_tags" class="form-control">
+                </div>
+
+                <div class="form-group">
+                  <label for="post_content">Post content</label>
+                  <input type="text" name="post_content" class="form-control">
+                </div>
+                <div class="form-group">
+
+                  <input type="submit" class="btn btn-primary" name="submit" value="Add Post">
                 </div>
               </form>
             </div>

@@ -100,7 +100,7 @@ function fetchAllPost()
                 <td>Otto</td>
                 <td>$post_status</td>
                 <td>$post_date</td>
-                <td><img class='img-thumbnail' src='$post_attachment'></td>
+                <td><img class='img-thumbnail' src='../images/$post_attachment'></td>
               <td>$post_tags</td>
               <td>$post_comment_count</td>
               <td>$post_views_count</td>
@@ -108,16 +108,48 @@ function fetchAllPost()
     }
   }
 }
-function insertPost()
+
+function fetchCategory()
 {
   global $conn;
 
-  $query = "INSERT into posts()" . "VALUES()";
+  $query = "SELECT * FROM categories";
+
+  $result = mysqli_query($conn, $query);
+
+  while ($row = mysqli_fetch_assoc($result)) {
+    $cat_id = $row['cat_id'];
+    $cat_title = $row['cat_title'];
+
+
+    echo "<option value='$cat_id'>$cat_title</option>";
+  }
+}
+function insertPost()
+{
+  global $conn;
+  $post_title = $_POST['post_title'];
+  $post_category = $_POST['post_category'];
+  $post_status = $_POST['post_status'];
+
+  $post_author = $_POST['post_author'];
+  $post_attachment = $_FILES['post_attachment']['name'];
+  $post_attachment_temp = $_FILES['post_attachment']['tmp_name'];
+  $post_tags = $_POST['post_tags'];
+  $post_content = $_POST['post_content'];
+  $post_date = date('d-m-y');
+  $post_comment_count = 4;
+  $post_views_count = 4;
+
+  move_uploaded_file($post_attachment_temp, "../images/$post_attachment");
+
+  $query = "INSERT into posts(post_title, post_views_count , post_category_id ,post_date,post_comment_count, post_status , post_author , post_attachment , post_tags , post_content)" .
+    "VALUES('$post_title',$post_views_count,$post_category,now(),$post_comment_count,'$post_status','$post_author','$post_attachment','$post_tags','$post_content')";
 
   $result = mysqli_query($conn, $query);
 
   if (!$result) {
-    echo "data not inserted";
+    echo "data not inserted" . mysqli_error($conn);
   } else {
     echo "Post created sucessfully";
   }
