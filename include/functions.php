@@ -40,3 +40,41 @@ function postsFetch()
     echo "<a class='btn btn-primary' href='#'>Read More <span class='glyphicon glyphicon-chevron-right'></span></a>";
   }
 }
+
+function tagsFetch()
+{
+  global $conn;
+
+  $query = "SELECT * from posts";
+
+  $result = mysqli_query($conn, $query);
+
+  while ($row = mysqli_fetch_assoc($result)) {
+    $post_tags = $row['post_tags'];
+    echo "<a href=''>" . $post_tags . "</a><br>";
+  }
+}
+function search()
+{
+  global $conn;
+
+  if (isset($_POST['submit'])) {
+    $search = $_POST['search'];
+
+    $query = "SELECT * FROM posts WHERE post_tags OR post_title OR post_content LIKE '%$search%'";
+
+    $result = mysqli_query($conn, $query);
+
+    if (!$result) {
+      echo "we didn't get the tags releated to your search";
+    }
+
+    $count = mysqli_num_rows($result);
+
+    if ($count == 0) {
+      echo "<h2>NO RESULT</h2>";
+    } else {
+      echo "<h2>we have post releated to your query</h2>";
+    }
+  }
+}
