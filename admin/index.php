@@ -1,10 +1,15 @@
+<!-- Head Start Here -->
 <?php include 'include/header.php' ?>
+<!-- Head End Here -->
 
 <body>
 
     <div id="wrapper">
 
+        <!-- Navigation Start Here -->
         <?php include 'include/nav.php'; ?>
+        <!-- Navigation End Here -->
+
 
         <div id="page-wrapper">
 
@@ -14,17 +19,10 @@
                 <div class="row">
                     <div class="col-lg-12">
                         <h1 class="page-header">
-                            Blank Page
-                            <small>Subheading</small>
+                            Welcome to admin
+                            <small>shadabdeveloper</small>
                         </h1>
-                        <ol class="breadcrumb">
-                            <li>
-                                <i class="fa fa-dashboard"></i> <a href="index.html">Dashboard</a>
-                            </li>
-                            <li class="active">
-                                <i class="fa fa-file"></i> Blank Page
-                            </li>
-                        </ol>
+
                     </div>
                 </div>
                 <!-- /.row -->
@@ -37,5 +35,6 @@
 
     </div>
     <!-- /#wrapper -->
-
+    <!-- Footer Start Here -->
     <?php include 'include/footer.php'; ?>
+    <!-- Footer End Here -->
