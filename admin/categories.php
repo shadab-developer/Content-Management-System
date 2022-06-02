@@ -48,8 +48,27 @@
             deleteCategory();
 
 
-            fetchCategories();
+
             ?>
+
+            <table class="table table-striped table-dark table-bordered">
+              <thead>
+                <tr>
+                  <th scope="col">#</th>
+                  <th scope="col">Category Name</th>
+                  <th scope="col">Option</th>
+
+                </tr>
+              </thead>
+              <tbody>
+
+                <?php fetchCategories(); ?>
+
+
+              </tbody>
+            </table>
+
+
           </div>
         </div>
         <!-- /.row -->

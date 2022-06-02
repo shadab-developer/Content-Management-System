@@ -25,14 +25,17 @@
 
           </div>
 
-          <table class="table table-striped table-dark">
+          <table class="table table-striped table-dark table-bordered">
             <thead>
               <tr>
                 <th scope="col">Post Title</th>
                 <th scope="col">Author</th>
                 <th scope="col">Categories</th>
+                <th scope="col">Status</th>
                 <th scope="col">Post Date</th>
                 <th scope="col">Attachment</th>
+                <th scope="col">Tags</th>
+                <th scope="col">Comments</th>
                 <th scope="col">Post Views</th>
                 <th scope="col">View Post</th>
 

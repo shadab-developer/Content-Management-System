@@ -12,24 +12,13 @@ function fetchCategories()
     $cat_title = $row['cat_title'];
 
 
-    echo "<table class='table table-striped table-dark'>
-      <thead>
-        <tr>
-          <th scope='col'>#</th>
-          <th scope='col'>Category Name</th>
-          <th scope='col'>Option</th>
-
-        </tr>
-      </thead>
-      <tbody>
+    echo "
         <tr>
           <th scope='row'>$cat_id</th>
           <td>$cat_title</td>
           <td><a href='categories.php?delete=$cat_id'><i class='fa fa-trash'></i></a>&nbsp;&nbsp;&nbsp;<a href='categories.php?edit=$cat_id'><i class='fa fa-edit'></i></a></td>
         </tr>
-
-      </tbody>
-    </table>";
+";
   }
 }
 
@@ -101,14 +90,19 @@ function fetchAllPost()
       $post_date = $row['post_date'];
       $post_attachment = $row['post_attachment'];
       $post_content = $row['post_content'];
+      $post_status = $row['post_status'];
+      $post_tags = $row['post_tags'];
+      $post_comment_count = $row['post_comment_count'];
       $post_views_count = $row['post_views_count'];
       echo "<tr>
                 <td>$post_title</td>
                 <td>$post_author</td>
                 <td>Otto</td>
+                <td>$post_status</td>
                 <td>$post_date</td>
                 <td><img class='img-thumbnail' src='$post_attachment'></td>
-
+              <td>$post_tags</td>
+              <td>$post_comment_count</td>
               <td>$post_views_count</td>
               <td><a href='#'>View Post</a></td></tr>";
     }
