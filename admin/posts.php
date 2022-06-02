@@ -38,12 +38,19 @@
                 <th scope="col">Comments</th>
                 <th scope="col">Post Views</th>
                 <th scope="col">View Post</th>
+                <th scope="col">Option</th>
 
               </tr>
             </thead>
             <tbody>
+
+
               <?php
-              fetchAllPost()
+              fetchAllPost();
+              if (isset($_GET['delete'])) {
+                deletePost();
+              }
+
               ?>
 
             </tbody>

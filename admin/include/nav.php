@@ -38,6 +38,7 @@
           <li>
             <a href="./add_post.php">Add Post</a>
           </li>
+
           <li>
             <a href="./posts.php">Posts</a>
           </li>

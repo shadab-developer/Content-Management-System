@@ -85,6 +85,7 @@ function fetchAllPost()
     echo "NO POST";
   } else {
     while ($row = mysqli_fetch_assoc($result)) {
+      $post_id = $row['post_id'];
       $post_title = $row['post_title'];
       $post_author = $row['post_author'];
       $post_date = $row['post_date'];
@@ -104,7 +105,8 @@ function fetchAllPost()
               <td>$post_tags</td>
               <td>$post_comment_count</td>
               <td>$post_views_count</td>
-              <td><a href='#'>View Post</a></td></tr>";
+              <td><a href='#'>View Post</a></td>
+              <td><a href='posts.php?delete=$post_id'><i class='fa fa-trash'></i></a>&nbsp;&nbsp;&nbsp;<a href='edit_post.php?edit=$post_id'><i class='fa fa-edit'></i></a></td></tr>";
     }
   }
 }
@@ -153,4 +155,23 @@ function insertPost()
   } else {
     echo "Post created sucessfully";
   }
+}
+function deletePost()
+{
+  global $conn;
+
+  $post_id = $_GET['delete'];
+
+  $query = "DELETE from posts where post_id = '$post_id'";
+
+  $result = mysqli_query($conn, $query);
+
+  if (!$result) {
+    echo "Not deleted";
+  } else {
+    echo "post Delete";
+  }
+}
+function editPost()
+{
 }
