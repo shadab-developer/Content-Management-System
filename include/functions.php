@@ -84,7 +84,7 @@ function search()
         echo "<p class='lead'>by <a href='#'>$post_author</a></p>";
         echo "<p><span class='glyphicon glyphicon-time'></span> Posted on $post_date at 10:00 PM</p> <hr>";
 
-        echo "<img class='img-responsive' src='$post_attachment' alt=''><hr>";
+        echo "<img class='img-responsive' src='./images/$post_attachment' alt=''><hr>";
 
         echo "<p>$post_content</p>";
         echo "<a class='btn btn-primary' href='#'>Read More <span class='glyphicon glyphicon-chevron-right'></span></a>";
