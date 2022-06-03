@@ -41,6 +41,7 @@
                   $post_content = $row['post_content'];
                   $post_status = $row['post_status'];
                   $post_tags = $row['post_tags'];
+                  $post_attachment = $row['post_attachment'];
                 }
               }
               if (isset($_GET['edit'])) {
@@ -56,12 +57,12 @@
                 </div>
                 <div class="form-group">
                   <label for="post_category">Post Category</label>
-                  <select name="post_category" class="form-control" id="cars" multiple>
+                  <select name="post_category" class="form-control">
 
                     <?php fetchCategory(); ?>
 
                   </select>
-                  <p>Hold down the Ctrl (windows) or Command (Mac) button to select multiple options.</p>
+
                 </div>
                 <div class="form-group">
                   <label for="post_status">Post Status</label>
@@ -77,6 +78,7 @@
                 <div class="form-group">
                   <label for="post_attachment">Image</label>
                   <input type="file" name="post_attachment" class="form-control">
+                  <img width="250" class='img-thumbnail' src='../images/<?php echo $post_attachment; ?>'>
                 </div>
                 <div class="form-group">
                   <label for="post_tags">Post tags</label>

@@ -41,12 +41,11 @@
                 </div>
                 <div class="form-group">
                   <label for="post_category">Post Category</label>
-                  <select name="post_category" class="form-control" id="cars" multiple>
+                  <select name="post_category" class="form-control">
 
                     <?php fetchCategory(); ?>
 
                   </select>
-                  <p>Hold down the Ctrl (windows) or Command (Mac) button to select multiple options.</p>
                 </div>
                 <div class="form-group">
                   <label for="post_status">Post Status</label>

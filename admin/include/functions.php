@@ -182,10 +182,7 @@ function editPost()
     $post_title = $_POST['post_title'];
     $post_category = $_POST['post_category'];
     $post_status = $_POST['post_status'];
-
-    $post_author = $_POST['post
-
-    _author'];
+    $post_author = $_POST['post_author'];
     $post_attachment = $_FILES['post_attachment']['name'];
     $post_attachment_temp = $_FILES['post_attachment']['tmp_name'];
     $post_tags = $_POST['post_tags'];
