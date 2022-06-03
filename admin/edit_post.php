@@ -26,6 +26,23 @@
             <div class="col-xs-10">
               <?php
 
+              $post_id = $_GET['edit'];
+              $query = "SELECT * from posts where post_id = $post_id";
+
+              $result = mysqli_query($conn, $query);
+
+
+              if (!$result) {
+                echo "NO POST";
+              } else {
+                while ($row = mysqli_fetch_assoc($result)) {
+                  $post_title = $row['post_title'];
+                  $post_author = $row['post_author'];
+                  $post_content = $row['post_content'];
+                  $post_status = $row['post_status'];
+                  $post_tags = $row['post_tags'];
+                }
+              }
               if (isset($_GET['edit'])) {
                 editPost();
               }
@@ -35,7 +52,7 @@
               <form action="" method="POST" enctype="multipart/form-data">
                 <div class="form-group">
                   <label for="post_title">Post Title</label>
-                  <input type="text" name="post_title" class="form-control">
+                  <input value="<?php echo $post_title; ?>" type="text" name="post_title" class="form-control">
                 </div>
                 <div class="form-group">
                   <label for="post_category">Post Category</label>
@@ -55,7 +72,7 @@
                 </div>
                 <div class="form-group">
                   <label for="post_author">Post Author</label>
-                  <input type="text" name="post_author" class="form-control">
+                  <input value="<?php echo $post_author; ?>" type="text" name="post_author" class="form-control">
                 </div>
                 <div class="form-group">
                   <label for="post_attachment">Image</label>
@@ -63,16 +80,16 @@
                 </div>
                 <div class="form-group">
                   <label for="post_tags">Post tags</label>
-                  <input type="text" name="post_tags" class="form-control">
+                  <input value="<?php echo $post_tags; ?>" type="text" name="post_tags" class="form-control">
                 </div>
 
                 <div class="form-group">
                   <label for="post_content">Post content</label>
-                  <input type="text" name="post_content" class="form-control">
+                  <input value="<?php echo $post_content; ?>" type="text" name="post_content" class="form-control">
                 </div>
                 <div class="form-group">
 
-                  <input type="submit" class="btn btn-primary" name="submit" value="Add Post">
+                  <input type="submit" class="btn btn-primary" name="submit" value="Edit Post">
                 </div>
               </form>
             </div>

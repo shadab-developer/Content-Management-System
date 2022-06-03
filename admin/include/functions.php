@@ -72,6 +72,7 @@ function editCategory()
     }
   }
 }
+
 function fetchAllPost()
 {
   global $conn;
@@ -174,4 +175,33 @@ function deletePost()
 }
 function editPost()
 {
+  global $conn;
+  if (isset($_POST['submit'])) {
+    $post_id = $_GET['edit'];
+
+    $post_title = $_POST['post_title'];
+    $post_category = $_POST['post_category'];
+    $post_status = $_POST['post_status'];
+
+    $post_author = $_POST['post
+
+    _author'];
+    $post_attachment = $_FILES['post_attachment']['name'];
+    $post_attachment_temp = $_FILES['post_attachment']['tmp_name'];
+    $post_tags = $_POST['post_tags'];
+    $post_content = $_POST['post_content'];
+
+    move_uploaded_file($post_attachment_temp, "../images/$post_attachment");
+
+    $query = "UPDATE posts SET  post_title = '$post_title' ,post_category_id = $post_category ,post_status = '$post_status' ,post_author = '$post_author' ,post_attachment = '$post_attachment' ,post_tags = '$post_tags' ,post_content = '$post_content' WHERE post_id= $post_id";
+
+    $result = mysqli_query($conn, $query);
+
+
+    if (!$result) {
+      echo "Post not updated" . mysqli_error($conn);
+    } else {
+      echo "post updated";
+    }
+  }
 }
