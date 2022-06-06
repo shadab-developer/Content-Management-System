@@ -69,7 +69,7 @@
 
                 <div class="form-group">
                   <label for="post_content">Post content</label>
-                  <input type="text" name="post_content" class="form-control">
+                  <textarea style="height: 300px;" type="text" name="post_content" class="form-control"></textarea>
                 </div>
                 <div class="form-group">
 

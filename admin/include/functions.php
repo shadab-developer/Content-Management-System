@@ -89,18 +89,30 @@ function fetchAllPost()
       $post_id = $row['post_id'];
       $post_title = $row['post_title'];
       $post_author = $row['post_author'];
+      $post_category_id = $row['post_category_id'];
       $post_date = $row['post_date'];
       $post_attachment = $row['post_attachment'];
-      $post_content = $row['post_content'];
       $post_status = $row['post_status'];
       $post_tags = $row['post_tags'];
       $post_comment_count = $row['post_comment_count'];
       $post_views_count = $row['post_views_count'];
+
       echo "<tr>
                 <td>$post_title</td>
-                <td>$post_author</td>
-                <td>Otto</td>
-                <td>$post_status</td>
+                <td>$post_author</td>";
+
+
+      $query1 = "SELECT * from categories WHERE cat_id = {$post_category_id}";
+
+      $result_categories = mysqli_query($conn, $query1);
+
+      while ($row = mysqli_fetch_assoc($result_categories)) {
+        $cat_title = $row['cat_title'];
+        echo "<td>{$cat_title}</td>";
+      }
+
+      echo "
+                  <td>$post_status</td>
                 <td>$post_date</td>
                 <td><img class='img-thumbnail' src='../images/$post_attachment'></td>
               <td>$post_tags</td>
@@ -175,7 +187,11 @@ function deletePost()
 }
 function editPost()
 {
+
+
   global $conn;
+
+
   if (isset($_POST['submit'])) {
     $post_id = $_GET['edit'];
 

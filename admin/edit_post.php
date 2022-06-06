@@ -87,7 +87,7 @@
 
                 <div class="form-group">
                   <label for="post_content">Post content</label>
-                  <input value="<?php echo $post_content; ?>" type="text" name="post_content" class="form-control">
+                  <textarea style="height: 300px;" type="text" name="post_content" class="form-control"> <?php echo $post_content; ?></textarea>
                 </div>
                 <div class="form-group">
 
