@@ -7,11 +7,11 @@ function categoriesFetch()
 
   $result = mysqli_query($conn, $query);
   while ($row = mysqli_fetch_assoc($result)) {
-
+    $cat_id = $row['cat_id'];
     $cat_title = $row['cat_title'];
 
     echo "<li>";
-    echo "<a href='#'>" . $cat_title . "</a>";
+    echo "<a href='category.php?c_id=$cat_id'>" . $cat_title . "</a>";
     echo "</li>";
   }
 }
