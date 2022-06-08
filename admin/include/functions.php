@@ -101,7 +101,6 @@ function fetchAllPost()
                 <td>$post_title</td>
                 <td>$post_author</td>";
 
-
       $query1 = "SELECT * from categories WHERE cat_id = {$post_category_id}";
 
       $result_categories = mysqli_query($conn, $query1);
