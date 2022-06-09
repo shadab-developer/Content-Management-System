@@ -33,13 +33,11 @@ while ($row = mysqli_fetch_assoc($result)) {
 
         <!-- POST Content START -->
         <?php
-
-
         $query = "SELECT * from posts where post_category_id = $cat_id";
-
         $result = mysqli_query($conn, $query);
-
-        if ($result) {
+        if (!$result) {
+          echo "Helelr";
+        } else {
           while ($row = mysqli_fetch_assoc($result)) {
             $post_id = $row['post_id'];
             $post_title = $row['post_title'];
@@ -56,11 +54,8 @@ while ($row = mysqli_fetch_assoc($result)) {
             echo "<p>$post_content</p>";
             echo "<a class='btn btn-primary' href='#'>Read More <span class='glyphicon glyphicon-chevron-right'></span></a>";
           }
-        } else {
-          echo "Hhdggsds";
         }
 
-        echo "sdggsdg" . $result;
         ?>
 
 
