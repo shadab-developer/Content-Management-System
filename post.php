@@ -25,6 +25,19 @@
                 $post_attachment = $row['post_attachment'];
                 $post_content = $row['post_content'];
             }
+
+
+            $query_comment = "SELECT * from comments where comment_post_id = $post_id";
+
+
+            $result_comment = mysqli_query($conn, $query_comment);
+
+            while ($row_comment = mysqli_fetch_assoc($result_comment)) {
+                $comment_author = $row_comment['comment_author'];
+                $comment_email = $row_comment['comment_email'];
+                $comment_content = $row_comment['comment_content'];
+                $comment_date = $row_comment['comment_date'];
+            }
             ?>
             <!-- Blog Post Content Column -->
             <div class="col-lg-8">
@@ -79,10 +92,10 @@
                         <img class="media-object" src="http://placehold.it/64x64" alt="">
                     </a>
                     <div class="media-body">
-                        <h4 class="media-heading">Start Bootstrap
-                            <small>August 25, 2014 at 9:30 PM</small>
+                        <h4 class="media-heading"><?php echo $comment_author; ?>
+                            <small><?php echo $comment_date; ?></small>
                         </h4>
-                        Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
+                        <?php echo $comment_content; ?>
                     </div>
                 </div>
 
