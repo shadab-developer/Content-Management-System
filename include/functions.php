@@ -93,3 +93,23 @@ function search()
     }
   }
 }
+
+function submitComment()
+{
+  global $conn, $post_id;
+
+  $author_name = $_POST['comment_author'];
+  $author_email = $_POST['comment_email'];
+  $author_content = $_POST['comment_content'];
+
+
+  $query = "INSERT into comments(comment_post_id , comment_author , comment_email , comment_content , comment_status , comment_date) VALUES($post_id ,'$author_name' , '$author_email' , '$author_content' , 'UnApproved'  , now() )";
+
+  $result = mysqli_query($conn, $query);
+
+  if (!$result) {
+    echo "Not submited" . mysqli_error($conn);
+  } else {
+    echo "submitted";
+  }
+}
