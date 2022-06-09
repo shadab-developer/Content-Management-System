@@ -217,3 +217,49 @@ function editPost()
     }
   }
 }
+
+function fetchAllComment()
+{
+  global $conn;
+
+  $query = "SELECT * from comments";
+
+  $result = mysqli_query($conn, $query);
+
+
+  if (!$result) {
+    echo "NO comments";
+  } else {
+    while ($row = mysqli_fetch_assoc($result)) {
+      $comment_post_id = $row['comment_post_id'];
+      $comment_author = $row['comment_author'];
+      $comment_email = $row['comment_email'];
+      $comment_content = $row['comment_content'];
+      $comment_status = $row['comment_status'];
+      $comment_date = $row['comment_date'];
+
+      echo "<tr>";
+
+
+      $query1 = "SELECT * from posts WHERE post_id = {$comment_post_id}";
+
+      $result_categories = mysqli_query($conn, $query1);
+
+      while ($row = mysqli_fetch_assoc($result_categories)) {
+        $post_title = $row['post_title'];
+        echo "<td>{$post_title}</td>";
+      }
+      echo "
+                <td>$comment_author</td>
+
+
+                  <td>$comment_email</td>
+                <td>$comment_content</td>
+
+              <td>$comment_status</td>
+              <td>$comment_date</td>
+              <td><a href='../post.php?p_id=$comment_post_id'>View Post</a></td>
+              <td><a href='posts.php?delete='><i class='fa fa-trash'></i></a>&nbsp;&nbsp;&nbsp;<a href='edit_post.php?edit=$'><i class='fa fa-edit'></i></a></td></tr>";
+    }
+  }
+}
