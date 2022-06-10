@@ -41,9 +41,11 @@
 
 
               <?php
+
+
               fetchAllComment();
               if (isset($_GET['delete'])) {
-                deletePost();
+                deleteComments();
               }
 
               ?>

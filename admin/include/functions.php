@@ -231,6 +231,7 @@ function fetchAllComment()
     echo "NO comments";
   } else {
     while ($row = mysqli_fetch_assoc($result)) {
+      $comment_id = $row['comment_id'];
       $comment_post_id = $row['comment_post_id'];
       $comment_author = $row['comment_author'];
       $comment_email = $row['comment_email'];
@@ -259,7 +260,24 @@ function fetchAllComment()
               <td>$comment_status</td>
               <td>$comment_date</td>
               <td><a href='../post.php?p_id=$comment_post_id'>View Post</a></td>
-              <td><a href='posts.php?delete='><i class='fa fa-trash'></i></a>&nbsp;&nbsp;&nbsp;<a href='edit_post.php?edit=$'><i class='fa fa-edit'></i></a></td></tr>";
+              <td><a href='comments.php?delete=$comment_id'><i class='fa fa-trash'></i></a>&nbsp;&nbsp;&nbsp;<a href='edit_post.php?edit=$'><i class='fa fa-edit'></i></a></td></tr>";
     }
+  }
+}
+
+function deleteComments()
+{
+  global $conn;
+
+  $comment_id = $_GET['delete'];
+
+  $query = "DELETE from comments where comment_id = $comment_id";
+
+  $result = mysqli_query($conn, $query);
+
+  if (!$result) {
+    echo "Comment Delete nii hua";
+  } else {
+    echo "Comment Delete ho gya";
   }
 }
