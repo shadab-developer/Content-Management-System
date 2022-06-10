@@ -296,7 +296,6 @@ function approveComment()
   if (!$result) {
     echo "Kuch garbar hai" . mysqli_error($conn);
   } else {
-    echo "Comment approve ho gya";
     header("Location: comments.php");
     die();
   }
@@ -314,7 +313,7 @@ function unapproveComment()
   if (!$result) {
     echo "Kuch garbar hai" . mysqli_error($conn);
   } else {
-    echo "Comment approve nii hua";
+
     header("Location: comments.php");
     die();
   }
