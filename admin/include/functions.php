@@ -248,7 +248,7 @@ function fetchAllComment()
 
       while ($row = mysqli_fetch_assoc($result_categories)) {
         $post_title = $row['post_title'];
-        echo "<td>{$post_title}</td>";
+        echo "<td><a href='../post.php?p_id=$comment_post_id' target='_blank'>{$post_title}</a></td>";
       }
       echo "
                 <td>$comment_author</td>
@@ -259,8 +259,10 @@ function fetchAllComment()
 
               <td>$comment_status</td>
               <td>$comment_date</td>
-              <td><a href='../post.php?p_id=$comment_post_id'>View Post</a></td>
-              <td><a href='comments.php?delete=$comment_id'><i class='fa fa-trash'></i></a>&nbsp;&nbsp;&nbsp;<a href='edit_post.php?edit=$'><i class='fa fa-edit'></i></a></td></tr>";
+              <td><a href='comments.php?approve=$comment_id''>Approve</a></td>
+              <td><a href='comments.php?unapprove=$comment_id'>Unapprove</a></td>
+              <td><a href='comments.php?delete=$comment_id'><i class='fa fa-trash'></i></a></td>
+              </tr>";
     }
   }
 }
@@ -279,5 +281,41 @@ function deleteComments()
     echo "Comment Delete nii hua";
   } else {
     echo "Comment Delete ho gya";
+  }
+}
+function approveComment()
+{
+  global $conn;
+  $comment_id = $_GET['approve'];
+  echo $comment_id;
+
+  $query = "UPDATE comments set comment_status ='Approved' where comment_id = $comment_id";
+
+  $result = mysqli_query($conn, $query);
+
+  if (!$result) {
+    echo "Kuch garbar hai" . mysqli_error($conn);
+  } else {
+    echo "Comment approve ho gya";
+    header("Location: comments.php");
+    die();
+  }
+}
+function unapproveComment()
+{
+  global $conn;
+  $comment_id = $_GET['unapprove'];
+  echo $comment_id;
+
+  $query = "UPDATE comments set comment_status ='UnApproved' where comment_id = $comment_id";
+
+  $result = mysqli_query($conn, $query);
+
+  if (!$result) {
+    echo "Kuch garbar hai" . mysqli_error($conn);
+  } else {
+    echo "Comment approve nii hua";
+    header("Location: comments.php");
+    die();
   }
 }

@@ -33,7 +33,9 @@
                 <th scope="col">Content</th>
                 <th scope="col">Status</th>
                 <th scope="col">Comment Date</th>
-                <th scope="col">Option</th>
+                <th scope="col">Approve</th>
+                <th scope="col">Unapprove</th>
+                <th scope="col">Delete</th>
 
               </tr>
             </thead>
@@ -46,6 +48,12 @@
               fetchAllComment();
               if (isset($_GET['delete'])) {
                 deleteComments();
+              }
+              if (isset($_GET['approve'])) {
+                approveComment();
+              }
+              if (isset($_GET['unapprove'])) {
+                unapproveComment();
               }
 
               ?>
