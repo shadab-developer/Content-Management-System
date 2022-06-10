@@ -105,7 +105,7 @@
                     </a>
                     <?php
 
-                    if ($post_id == $comment_post_id) {
+                    if (!empty($comment_post_id)) {
 
                         echo "
 
