@@ -25,19 +25,19 @@
                 $post_attachment = $row['post_attachment'];
                 $post_content = $row['post_content'];
             }
-
-
             $query_comment = "SELECT * from comments where comment_post_id = $post_id";
 
 
             $result_comment = mysqli_query($conn, $query_comment);
 
             while ($row_comment = mysqli_fetch_assoc($result_comment)) {
+                $comment_post_id = $row_comment['comment_post_id'];
                 $comment_author = $row_comment['comment_author'];
                 $comment_email = $row_comment['comment_email'];
                 $comment_content = $row_comment['comment_content'];
                 $comment_date = $row_comment['comment_date'];
             }
+
             ?>
             <!-- Blog Post Content Column -->
             <div class="col-lg-8">
@@ -99,30 +99,40 @@
                 <hr>
 
                 <!-- Posted Comments -->
-
-                <!-- Comment -->
-                <div class="media">
-                    <a class="pull-left" href="#">
-                        <img class="media-object" src="http://placehold.it/64x64" alt="">
+                <div class='media'>
+                    <a class='pull-left' href='#'>
+                        <img class='media-object' src='http://placehold.it/64x64' alt=''>
                     </a>
-                    <div class="media-body">
-                        <h4 class="media-heading"><?php echo $comment_author; ?>
-                            <small><?php echo $comment_date; ?></small>
+                    <?php
+
+                    if ($post_id == $comment_post_id) {
+
+                        echo "
+
+                    <div class='media-body'>
+                        <h4 class='media-heading'>$comment_author
+                            <small>$comment_date</small>
                         </h4>
-                        <?php echo $comment_content; ?>
-                    </div>
+                        $comment_content
+
+
+                ";
+                    }
+
+                    ?>
                 </div>
-
-
-
             </div>
 
-            <!-- Blog Sidebar Widgets Column -->
-            <?php include 'include/sidebar.php'; ?>
+
 
         </div>
-        <!-- /.row -->
 
-        <hr>
+        <!-- Blog Sidebar Widgets Column -->
+        <?php include 'include/sidebar.php'; ?>
 
-        <?php include 'include/footer.php'; ?>
+    </div>
+    <!-- /.row -->
+
+    <hr>
+
+    <?php include 'include/footer.php'; ?>
