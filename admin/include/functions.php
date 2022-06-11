@@ -97,6 +97,7 @@ function fetchAllPost()
       $post_comment_count = $row['post_comment_count'];
       $post_views_count = $row['post_views_count'];
 
+
       echo "<tr>
                 <td>$post_title</td>
                 <td>$post_author</td>";

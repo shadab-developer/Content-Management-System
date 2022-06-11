@@ -25,18 +25,7 @@
                 $post_attachment = $row['post_attachment'];
                 $post_content = $row['post_content'];
             }
-            $query_comment = "SELECT * from comments where comment_post_id = $post_id";
 
-
-            $result_comment = mysqli_query($conn, $query_comment);
-
-            while ($row_comment = mysqli_fetch_assoc($result_comment)) {
-                $comment_post_id = $row_comment['comment_post_id'];
-                $comment_author = $row_comment['comment_author'];
-                $comment_email = $row_comment['comment_email'];
-                $comment_content = $row_comment['comment_content'];
-                $comment_date = $row_comment['comment_date'];
-            }
 
             ?>
             <!-- Blog Post Content Column -->
@@ -98,41 +87,58 @@
 
                 <hr>
 
-                <!-- Posted Comments -->
-                <div class='media'>
-                    <a class='pull-left' href='#'>
-                        <img class='media-object' src='http://placehold.it/64x64' alt=''>
-                    </a>
-                    <?php
+                <!-- Comment -->
 
-                    if (!empty($comment_post_id)) {
+                <?php
+
+                $query_comment = "SELECT * from comments where comment_post_id = $post_id";
+
+
+                $result_comment = mysqli_query($conn, $query_comment);
+
+                while ($row_comment = mysqli_fetch_assoc($result_comment)) {
+                    $comment_post_id = $row_comment['comment_post_id'];
+                    $comment_author = $row_comment['comment_author'];
+                    $comment_email = $row_comment['comment_email'];
+                    $comment_status = $row_comment['comment_status'];
+                    $comment_content = $row_comment['comment_content'];
+                    $comment_date = $row_comment['comment_date'];
+                    if (!empty($comment_post_id) && $comment_status == "Approved") {
 
                         echo "
+                            <div class='media' style='margin-bottom : 20px'>
 
-                    <div class='media-body'>
+                    <a class='pull-left' href='#'>
+                        <img class='media-object' src='https://source.unsplash.com/64x64' alt=''>
+                    </a>
+                    <div class=' media-body'>
                         <h4 class='media-heading'>$comment_author
-                            <small>$comment_date</small>
+                            <small>$comment_date at 9:30 PM</small>
                         </h4>
                         $comment_content
 
+                    </div>
+                </div>
+
 
                 ";
+                    } else {
+                        echo "<h4 class='media-heading'>
+                            Koe comment nii kiya hai
+                        </h4>";
                     }
+                }
+                ?>
 
-                    ?>
-                </div>
+
             </div>
 
-
+            <!-- Blog Sidebar Widgets Column -->
+            <?php include 'include/sidebar.php'; ?>
 
         </div>
+        <!-- /.row -->
 
-        <!-- Blog Sidebar Widgets Column -->
-        <?php include 'include/sidebar.php'; ?>
+        <hr>
 
-    </div>
-    <!-- /.row -->
-
-    <hr>
-
-    <?php include 'include/footer.php'; ?>
+        <?php include 'include/footer.php'; ?>
