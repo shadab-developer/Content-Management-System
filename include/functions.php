@@ -20,7 +20,7 @@ function postsFetch()
 {
 
   global $conn;
-  $query = "SELECT * from posts where post_status = 'published'";
+  $query = "SELECT * from posts ";
 
   $result = mysqli_query($conn, $query);
 
@@ -31,6 +31,8 @@ function postsFetch()
     $post_date = $row['post_date'];
     $post_attachment = $row['post_attachment'];
     $post_content = substr($row['post_content'], 0, 100);
+
+
     echo "<h2><a href='post.php?p_id=$post_id'>$post_title</a></h2>";
     echo "<p class='lead'>by <a href='#'>$post_author</a></p>";
     echo "<p><span class='glyphicon glyphicon-time'></span> Posted on $post_date at 10:00 PM</p> <hr>";

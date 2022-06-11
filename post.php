@@ -91,7 +91,7 @@
 
                 <?php
 
-                $query_comment = "SELECT * from comments where comment_post_id = $post_id AND comment_status = 'Approved'";
+                $query_comment = "SELECT * from comments where comment_post_id = $post_id ";
 
 
                 $result_comment = mysqli_query($conn, $query_comment);
@@ -104,8 +104,14 @@
                     $comment_content = $row_comment['comment_content'];
                     $comment_date = $row_comment['comment_date'];
 
+                    if ($comment_status !== 'Approved') {
+                        echo "<h3>No more comments</h3>";
+                    } else {
 
-                    echo "
+
+
+
+                        echo "
                             <div class='media' style='margin-bottom : 20px'>
 
                     <a class='pull-left' href='#'>
@@ -120,8 +126,8 @@
                     </div>
                 </div>
                 ";
+                    }
                 }
-
 
                 ?>
 
