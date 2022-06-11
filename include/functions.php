@@ -20,7 +20,7 @@ function postsFetch()
 {
 
   global $conn;
-  $query = "SELECT * from posts";
+  $query = "SELECT * from posts where post_status = 'published'";
 
   $result = mysqli_query($conn, $query);
 
@@ -112,4 +112,8 @@ function submitComment()
   } else {
     echo "submitted";
   }
+
+  $commentCount = "UPDATE posts SET post_comment_count = post_comment_count + 1 where post_id = $post_id";
+
+  mysqli_query($conn, $commentCount);
 }

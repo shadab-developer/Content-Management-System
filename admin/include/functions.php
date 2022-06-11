@@ -98,6 +98,8 @@ function fetchAllPost()
       $post_views_count = $row['post_views_count'];
 
 
+
+
       echo "<tr>
                 <td>$post_title</td>
                 <td>$post_author</td>";
@@ -153,13 +155,12 @@ function insertPost()
   $post_tags = $_POST['post_tags'];
   $post_content = $_POST['post_content'];
   $post_date = date('d-m-y');
-  $post_comment_count = 4;
   $post_views_count = 4;
 
   move_uploaded_file($post_attachment_temp, "../images/$post_attachment");
 
-  $query = "INSERT into posts(post_title, post_views_count , post_category_id ,post_date,post_comment_count, post_status , post_author , post_attachment , post_tags , post_content)" .
-    "VALUES('$post_title',$post_views_count,$post_category,now(),$post_comment_count,'$post_status','$post_author','$post_attachment','$post_tags','$post_content')";
+  $query = "INSERT into posts(post_title,post_comment_count, post_views_count , post_category_id ,post_date, post_status , post_author , post_attachment , post_tags , post_content)" .
+    "VALUES('$post_title',0 , $post_views_count,$post_category,now(),'$post_status','$post_author','$post_attachment','$post_tags','$post_content')";
 
   $result = mysqli_query($conn, $query);
 

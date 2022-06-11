@@ -91,7 +91,7 @@
 
                 <?php
 
-                $query_comment = "SELECT * from comments where comment_post_id = $post_id";
+                $query_comment = "SELECT * from comments where comment_post_id = $post_id AND comment_status = 'Approved'";
 
 
                 $result_comment = mysqli_query($conn, $query_comment);
@@ -103,9 +103,9 @@
                     $comment_status = $row_comment['comment_status'];
                     $comment_content = $row_comment['comment_content'];
                     $comment_date = $row_comment['comment_date'];
-                    if (!empty($comment_post_id) && $comment_status == "Approved") {
 
-                        echo "
+
+                    echo "
                             <div class='media' style='margin-bottom : 20px'>
 
                     <a class='pull-left' href='#'>
@@ -119,15 +119,10 @@
 
                     </div>
                 </div>
-
-
                 ";
-                    } else {
-                        echo "<h4 class='media-heading'>
-                            Koe comment nii kiya hai
-                        </h4>";
-                    }
                 }
+
+
                 ?>
 
 
