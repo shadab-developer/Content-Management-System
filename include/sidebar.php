@@ -22,6 +22,28 @@
     <!-- /.input-group -->
   </div>
 
+  <!-- Login Widget Well Start-->
+  <div class="well">
+    <h4>Login</h4>
+    <form action="include/login.php" method="POST">
+      <div class="form-group">
+        <label for="username">Username</label>
+        <input type="text" name="username" class="form-control">
+      </div>
+
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input type="text" name="password" class="form-control">
+      </div>
+
+      <div class="form-group">
+        <button class="btn btn-primary" type="submit" name="login">Login</button>
+      </div>
+
+    </form>
+  </div>
+  <!-- Login Widget Well End-->
+
   <!-- Blog Categories Well Start -->
   <div class="well">
     <h4>Blog Categories</h4>
@@ -57,11 +79,6 @@
   <!-- Blog Categories Well End -->
 
 
-  <!-- Side Widget Well Start-->
-  <div class="well">
-    <h4>Side Widget Well</h4>
-    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore, perspiciatis adipisci accusamus laudantium odit aliquam repellat tempore quos aspernatur vero.</p>
-  </div>
-  <!-- Side Widget Well End-->
+
 
 </div>
