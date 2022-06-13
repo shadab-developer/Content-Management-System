@@ -388,3 +388,6 @@ function insertUser()
     echo "Inserted";
   }
 }
+function changeRole()
+{
+}
