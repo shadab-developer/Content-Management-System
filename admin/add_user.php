@@ -59,8 +59,7 @@
                   <label for="username">Role</label>
                   <select name="user_role" class="form-control">Role
                     <option value="Admin">Admin</option>
-                    <option value="Editor">Editor</option>
-                    <option value="System_Admin">System Admin</option>
+                    <option value="Author">Author</option>
                   </select>
 
 

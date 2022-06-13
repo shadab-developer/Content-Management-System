@@ -36,6 +36,8 @@
                 <th scope="col">Email</th>
                 <th scope="col">Image</th>
                 <th scope="col">Role</th>
+                <th scope="col">Change to Admin</th>
+                <th scope="col">Change to Author</th>
                 <th scope="col">Option</th>
               </tr>
             </thead>

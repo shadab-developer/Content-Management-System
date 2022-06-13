@@ -334,6 +334,9 @@ function fetchUser()
                 <td>$user_email</td>
                 <td><img width='100' height='100' class='img-thumbnail rounded' src='../images/$user_image'></td>
                 <td>$user_role</td>
+
+                <td><a href='users.php?change_to_admin=$user_id'>Change to admin</td>
+                <td><a href='users.php?change_to_author=$user_id'>Change to author</td>
                 <td><a href='users.php?delete=$user_id'><i class='fa fa-trash'></i></a></td>
               </tr>
                   ";
