@@ -49,6 +49,9 @@
                 deleteUser();
               }
 
+              if (isset($_GET['change_to_admin']) || isset($_GET['change_to_author'])) {
+                changeRole();
+              }
 
               ?>
 

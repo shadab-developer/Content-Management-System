@@ -390,4 +390,32 @@ function insertUser()
 }
 function changeRole()
 {
+  global $conn;
+
+  $change_to_admin = $_GET['change_to_admin'];
+  $change_to_author = $_GET['change_to_author'];
+
+  if (isset($_GET['change_to_admin'])) {
+    $query = "UPDATE users set user_role ='Admin' where user_id = $change_to_admin";
+
+    $result = mysqli_query($conn, $query);
+
+    if (!$result) {
+      echo mysqli_error($conn);
+    } else {
+      header("Location: users.php");
+      die();
+    }
+  } elseif (isset($_GET['change_to_author'])) {
+    $query = "UPDATE users set user_role ='Author' where user_id = $change_to_author";
+
+    $result = mysqli_query($conn, $query);
+
+    if (!$result) {
+      echo mysqli_error($conn);
+    } else {
+      header("Location: users.php");
+      die();
+    }
+  }
 }
