@@ -188,14 +188,9 @@ function deletePost()
 }
 function editPost()
 {
-
-
   global $conn;
-
-
   if (isset($_POST['submit'])) {
     $post_id = $_GET['edit'];
-
     $post_title = $_POST['post_title'];
     $post_category = $_POST['post_category'];
     $post_status = $_POST['post_status'];
@@ -204,9 +199,7 @@ function editPost()
     $post_attachment_temp = $_FILES['post_attachment']['tmp_name'];
     $post_tags = $_POST['post_tags'];
     $post_content = $_POST['post_content'];
-
     move_uploaded_file($post_attachment_temp, "../images/$post_attachment");
-
     $query = "UPDATE posts SET  post_title = '$post_title' ,post_category_id = $post_category ,post_status = '$post_status' ,post_author = '$post_author' ,post_attachment = '$post_attachment' ,post_tags = '$post_tags' ,post_content = '$post_content' WHERE post_id= $post_id";
 
     $result = mysqli_query($conn, $query);
@@ -240,25 +233,17 @@ function fetchAllComment()
       $comment_content = $row['comment_content'];
       $comment_status = $row['comment_status'];
       $comment_date = $row['comment_date'];
-
       echo "<tr>";
-
-
       $query1 = "SELECT * from posts WHERE post_id = {$comment_post_id}";
-
       $result_categories = mysqli_query($conn, $query1);
-
       while ($row = mysqli_fetch_assoc($result_categories)) {
         $post_title = $row['post_title'];
         echo "<td><a href='../post.php?p_id=$comment_post_id' target='_blank'>{$post_title}</a></td>";
       }
       echo "
-                <td>$comment_author</td>
-
-
-                  <td>$comment_email</td>
-                <td>$comment_content</td>
-
+              <td>$comment_author</td>
+              <td>$comment_email</td>
+              <td>$comment_content</td>
               <td>$comment_status</td>
               <td>$comment_date</td>
               <td><a href='comments.php?approve=$comment_id''>Approve</a></td>
@@ -268,7 +253,6 @@ function fetchAllComment()
     }
   }
 }
-
 function deleteComments()
 {
   global $conn;
@@ -318,5 +302,86 @@ function unapproveComment()
 
     header("Location: comments.php");
     die();
+  }
+}
+
+function fetchUser()
+{
+  global $conn;
+
+  $query = "SELECT * from users";
+
+  $result = mysqli_query($conn, $query);
+
+  if (!$result) {
+    echo mysqli_error($conn);
+  } else {
+    while ($row = mysqli_fetch_assoc($result)) {
+      $user_id = $row['user_id'];
+      $user_username = $row['user_username'];
+      $user_firstname = $row['user_firstname'];
+      $user_email = $row['user_email'];
+      $user_lastname = $row['user_lastname'];
+      $user_role = $row['user_role'];
+      $user_image = $row['user_image'];
+      echo "
+
+                  <tr>
+                <th scope='row'> $user_id</th>
+                <td>$user_username</td>
+                <td>$user_firstname</td>
+                <td>$user_lastname</td>
+                <td>$user_email</td>
+                <td><img width='100' height='100' class='img-thumbnail rounded' src='../images/$user_image'></td>
+                <td>$user_role</td>
+                <td><a href='users.php?delete=$user_id'><i class='fa fa-trash'></i></a></td>
+              </tr>
+                  ";
+    }
+  }
+}
+
+function deleteUser()
+{
+  global $conn;
+  $user_id = $_GET['delete'];
+
+  $query = "DELETE from users where user_id = $user_id";
+
+  $result = mysqli_query($conn, $query);
+
+  if (!$result) {
+    echo mysqli_error($conn);
+  } else {
+    header("Location: users.php");
+    die();
+  }
+}
+function insertUser()
+{
+  global $conn;
+
+
+  $username = $_POST['user_username'];
+  $user_firstname = $_POST['user_firstname'];
+  $user_lastname = $_POST['user_lastname'];
+  $user_email = $_POST['user_email'];
+  $user_password = $_POST['user_password'];
+  $user_role = $_POST['user_role'];
+  $user_image = $_FILES['user_image']['name'];
+  $user_image_tmp = $_FILES['user_image']['tmp_name'];
+
+  move_uploaded_file($user_image_tmp, "../images/$user_image");
+
+
+  $query = "INSERT into users(user_username,user_firstname,user_lastname,user_password,user_email,user_role, user_image,randSalt)
+  VALUES('$username' , '$user_firstname' , '$user_lastname' ,'$user_password' , '$user_email' , '$user_role','$user_image','sd2352563')";
+
+  $result = mysqli_query($conn, $query);
+
+  if (!$result) {
+    echo mysqli_error($conn);
+  } else {
+    echo "Inserted";
   }
 }

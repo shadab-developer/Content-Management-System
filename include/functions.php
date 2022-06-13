@@ -20,7 +20,7 @@ function postsFetch()
 {
 
   global $conn;
-  $query = "SELECT * from posts ";
+  $query = "SELECT * from posts where post_status = 'Published'";
 
   $result = mysqli_query($conn, $query);
 
