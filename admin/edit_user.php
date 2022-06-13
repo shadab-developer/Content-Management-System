@@ -26,31 +26,69 @@
 
               <?php
               editUser();
+
+              $user_id = $_GET['edit'];
+
+
+              $query = "SELECT * from users where user_id = $user_id";
+
+              $result = mysqli_query($conn, $query);
+
+              while ($row = mysqli_fetch_assoc($result)) {
+                $username = $row['user_username'];
+                $firstname = $row['user_firstname'];
+                $lastname = $row['user_lastname'];
+                $useremail = $row['user_email'];
+                $user_image = $row['user_image'];
+                $user_role = $row['user_role'];
+              }
+
+              if (isset($_POST['edit'])) {
+                $username = $_POST['user_username'];
+                $user_firstname = $_POST['user_firstname'];
+                $user_lastname = $_POST['user_lastname'];
+                $user_email = $_POST['user_email'];
+                $user_role = $_POST['user_role'];
+                $user_image = $_FILES['user_image']['name'];
+                $user_image_tmp = $_FILES['user_image']['tmp_name'];
+
+                move_uploaded_file($user_image_tmp, "../images/$user_image");
+
+
+                $query = "UPDATE users set user_username = '$username',user_firstname = '$user_firstname',user_lastname = '$user_lastname',user_email = '$user_email',user_role = '$user_role',user_image = '$user_image' where user_id = $user_id";
+
+                $result = mysqli_query($conn, $query);
+
+
+                if (!$result) {
+                  echo mysqli_error($conn);
+                } else {
+                  header("Location: users.php");
+                  die();
+                }
+              }
+
+
               ?>
               <form action="" method="POST" enctype="multipart/form-data">
                 <div class="form-group">
                   <label for="username">Username</label>
-                  <input type="text" name="user_username" placeholder="Enter your Username" class="form-control">
+                  <input type="text" name="user_username" value="<?php echo $username; ?>" class="form-control">
                 </div>
 
                 <div class="form-group">
                   <label for="username">First Name</label>
-                  <input type="text" name="user_firstname" placeholder="Enter your First Name" class="form-control">
+                  <input type="text" name="user_firstname" value="<?php echo $firstname; ?>" class="form-control">
                 </div>
 
                 <div class="form-group">
                   <label for="username">Last Name</label>
-                  <input type="text" name="user_lastname" placeholder="Enter your Last Name" class="form-control">
+                  <input type="text" name="user_lastname" value="<?php echo $lastname; ?>" class="form-control">
                 </div>
 
                 <div class="form-group">
                   <label for="username">Email</label>
-                  <input type="email" name="user_email" placeholder="Enter your email" class="form-control">
-                </div>
-
-                <div class="form-group">
-                  <label for="username">password</label>
-                  <input type="password" name="user_password" placeholder="Enter your password" class="form-control">
+                  <input type="email" name="user_email" value="<?php echo $useremail; ?>" class="form-control">
                 </div>
 
                 <div class="form-group">
@@ -66,10 +104,11 @@
                 <div class="form-group">
                   <label for="username">Image</label>
                   <input type="file" name="user_image" class="form-control">
+                  <img width="250" class='img-thumbnail' src='../images/<?php echo $user_image; ?>'>
                 </div>
 
                 <div class="form-group">
-                  <button type="submit" name="submit" class="btn btn-primary">Create User</button>
+                  <button type="submit" name="edit" class="btn btn-primary">Create User</button>
                 </div>
 
               </form>
