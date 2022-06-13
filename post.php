@@ -91,7 +91,7 @@
 
                 <?php
 
-                $query_comment = "SELECT * from comments where comment_post_id = $post_id ";
+                $query_comment = "SELECT * from comments where comment_post_id = $post_id AND comment_status = 'Approved'";
 
 
                 $result_comment = mysqli_query($conn, $query_comment);
@@ -105,7 +105,7 @@
                     $comment_date = $row_comment['comment_date'];
 
                     if ($comment_status !== 'Approved') {
-                        echo "<h3>No more comments</h3>";
+                        echo "<h3>Waiting for approval</h3>";
                     } else {
 
 

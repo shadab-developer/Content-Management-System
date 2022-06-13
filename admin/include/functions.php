@@ -337,7 +337,7 @@ function fetchUser()
 
                 <td><a href='users.php?change_to_admin=$user_id'>Change to admin</td>
                 <td><a href='users.php?change_to_author=$user_id'>Change to author</td>
-                <td><a href='users.php?delete=$user_id'><i class='fa fa-trash'></i></a></td>
+                <td><a href='users.php?delete=$user_id'><i class='fa fa-trash'></i></a>&nbsp;&nbsp;&nbsp;<a href='edit_user.php?edit=$user_id'><i class='fa fa-edit'></i></a></td>
               </tr>
                   ";
     }
@@ -418,4 +418,8 @@ function changeRole()
       die();
     }
   }
+}
+function editUser()
+{
+  global $conn;
 }

@@ -77,7 +77,7 @@
                 </div>
                 <div class="form-group">
                   <label for="post_attachment">Image</label>
-                  <input type="file" name="post_attachment" class="form-control">
+                  <input type="file" name="post_attachment" value="../images/<?php echo $post_attachment; ?>" class="form-control">
                   <img width="250" class='img-thumbnail' src='../images/<?php echo $post_attachment; ?>'>
                 </div>
                 <div class="form-group">
