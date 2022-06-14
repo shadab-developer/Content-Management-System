@@ -64,8 +64,12 @@
           </li>
         </ul>
       </li>
-      <li class="active">
+      <li>
         <a href="./comments.php"><i class="fa fa-fw fa-file"></i> Comments</a>
+      </li>
+
+      <li>
+        <a href="./profile.php"><i class="fa fa-fw fa-user"></i> Profile</a>
       </li>
     </ul>
   </div>
