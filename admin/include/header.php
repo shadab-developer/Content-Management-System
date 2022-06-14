@@ -4,6 +4,13 @@ ob_start();
 session_start();
 include 'include/functions.php';
 include '../include/config.php';
+
+
+if (!isset($_SESSION['user_role'])) {
+  header("Location: ../index.php");
+}
+
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
