@@ -31,6 +31,8 @@ if (!isset($_SESSION['user_role'])) {
   <!-- Custom CSS -->
   <link href="./css/sb-admin.css" rel="stylesheet">
 
+  <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+
   <!-- Custom Fonts -->
   <link href="./font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 </head>
