@@ -1,3 +1,24 @@
+<?php
+$user_id = $_SESSION['user_id'];
+
+$query = "SELECT * from users where user_id = $user_id ";
+
+$result = mysqli_query($conn, $query);
+
+
+if (!$result) {
+  echo mysqli_error($conn);
+}
+
+while ($row = mysqli_fetch_assoc($result)) {
+  $user_firstname = $row['user_firstname'];
+  $user_lastname = $row['user_lastname'];
+  $user_image = $row['user_image'];
+  $user_email = $row['user_email'];
+  $user_username = $row['user_username'];
+  $user_password = $row['user_password'];
+}
+?>
 <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
   <!-- Brand and toggle get grouped for better mobile display -->
   <div class="navbar-header">
@@ -13,7 +34,7 @@
   <ul class="nav navbar-right top-nav">
 
     <li class="dropdown">
-      <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> <?php echo $_SESSION['user_firstname'] . '&nbsp;' . $_SESSION['user_lastname'] ?> <b class="caret"></b></a>
+      <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> <?php echo $user_firstname . '&nbsp;' . $user_lastname ?> <b class="caret"></b></a>
       <ul class="dropdown-menu">
         <li>
           <a href="./profile.php"><i class="fa fa-fw fa-user"></i> Profile</a>

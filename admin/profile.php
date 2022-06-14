@@ -26,6 +26,7 @@
     while ($row = mysqli_fetch_assoc($result)) {
       $user_firstname = $row['user_firstname'];
       $user_lastname = $row['user_lastname'];
+      $user_image = $row['user_image'];
       $user_email = $row['user_email'];
       $user_username = $row['user_username'];
       $user_password = $row['user_password'];
@@ -47,13 +48,13 @@
           <div class="col-lg-12">
             <h1 class="page-header">
               Welcome to admin
-              <small><?php echo $_SESSION['user_username'] ?></small>
+              <small><?php echo $user_username ?></small>
             </h1>
             <div class="container rounded bg-white mt-5 mb-5">
               <div class="row">
                 <div class="col-md-3 border-right">
                   <form action="" method="POST" enctype="multipart/form-data">
-                    <div class="d-flex flex-column align-items-center text-center p-3 py-5"><img class="rounded-circle mt-5" width="150px" src="../images/<?php echo $_SESSION['user_image'] ?>"> </span></div>
+                    <div class="d-flex flex-column align-items-center text-center p-3 py-5"><img class="rounded-circle mt-5" width="150px" src="../images/<?php echo $user_image ?>"> </span></div>
                     <br><input type="file" name="user_image" class="form-control">
                 </div>
                 <div class="col-md-5 border-right">
