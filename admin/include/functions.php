@@ -426,7 +426,7 @@ function editUser()
 
 function saveProfile()
 {
-  global $conn;
+  global $conn, $user_id;
 
 
   $user_image = $_FILES['user_image']['name'];
@@ -438,7 +438,7 @@ function saveProfile()
 
   move_uploaded_file($user_image_tmp, "../images/$user_image");
 
-  $query = "UPDATE users set user_image = '$user_image' , user_firstname = '$user_firstname' , user_lastname = '$user_lastname' , user_email = '$user_email'";
+  $query = "UPDATE users set user_image = '$user_image' , user_firstname = '$user_firstname' , user_lastname = '$user_lastname' , user_email = '$user_email' where user_id = $user_id";
 
 
   $result = mysqli_query($conn, $query);
