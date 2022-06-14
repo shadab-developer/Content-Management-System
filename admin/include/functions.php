@@ -423,3 +423,47 @@ function editUser()
 {
   global $conn;
 }
+
+function saveProfile()
+{
+  global $conn;
+
+
+  $user_image = $_FILES['user_image']['name'];
+  $user_image_tmp = $_FILES['user_image']['tmp_name'];
+  $user_firstname = $_POST['user_firstname'];
+  $user_lastname = $_POST['user_lastname'];
+  $user_email = $_POST['user_email'];
+
+
+  move_uploaded_file($user_image_tmp, "../images/$user_image");
+
+  $query = "UPDATE users set user_image = '$user_image' , user_firstname = '$user_firstname' , user_lastname = '$user_lastname' , user_email = '$user_email'";
+
+
+  $result = mysqli_query($conn, $query);
+
+  if (!$result) {
+    echo mysqli_error($conn);
+  } else {
+    header("Location: profile.php");
+    die();
+  }
+}
+function saveSecurity()
+{
+  global $conn, $user_id;
+
+  $user_username = $_POST['user_username'];
+  $user_password = $_POST['user_password'];
+
+  $query = "UPDATE users set user_username = '$user_username' , user_password = '$user_password' where user_id = $user_id";
+
+  $result = mysqli_query($conn, $query);
+  if (!$result) {
+    echo mysqli_error($conn);
+  } else {
+    header("Location: profile.php");
+    die();
+  }
+}

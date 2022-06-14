@@ -31,6 +31,11 @@
       $user_password = $row['user_password'];
     }
 
+    if (isset($_POST['save_profile'])) {
+      saveProfile();
+    } else if (isset($_POST['save_security'])) {
+      saveSecurity();
+    }
     ?>
 
     <div id="page-wrapper">
@@ -63,7 +68,7 @@
                     </div>
                     <div class="row mt-3">
 
-                      <div class="col-md-12"><label class="labels">Email ID</label><input type="text" class="form-control" value="<?php echo $user_email ?>"></div>
+                      <div class="col-md-12"><label class="labels">Email ID</label><input type="text" class="form-control" name="user_email" value="<?php echo $user_email ?>"></div>
                     </div>
                     <br>
                     <div class="mt-5 text-center"><button class="btn btn-primary profile-button" type="submit" name="save_profile">Save Profile</button></div>
@@ -77,8 +82,8 @@
                       <h4 class="text-right">Security Settings</h4>
                     </div>
                     <form action="" method="POST">
-                      <div class="col-md-12"><label class="labels">UserName</label><input type="text" class="form-control" value="<?php echo $user_username ?>"></div> <br>
-                      <div class="col-md-12"><label class="labels">Password</label><input type="password" class="form-control" value="<?php echo $user_password ?>"></div>
+                      <div class="col-md-12"><label class="labels">UserName</label><input type="text" class="form-control" name="user_username" value="<?php echo $user_username ?>"></div> <br>
+                      <div class="col-md-12"><label class="labels">Password</label><input type="password" class="form-control" name="user_password" value="<?php echo $user_password ?>"></div>
 
                   </div>
                   <div class="row mt-3">
