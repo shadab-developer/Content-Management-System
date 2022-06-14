@@ -167,6 +167,20 @@ while ($row = mysqli_fetch_assoc($result)) {
                         </div>
                         <!-- /.row -->
 
+                        <?php
+                        $query = "SELECT * from posts where post_status = 'draft'";
+
+                        $draftPost = mysqli_query($conn, $query);
+
+                        $draftpost_count = mysqli_num_rows($draftPost);
+
+                        $query1 = "SELECT * from comments where comment_status = 'UnApproved'";
+
+                        $draftComment = mysqli_query($conn, $query1);
+
+                        $draftcomment_count = mysqli_num_rows($draftComment);
+                        ?>
+
                         <div class="row">
                             <script type="text/javascript">
                                 google.charts.load('current', {
@@ -176,17 +190,22 @@ while ($row = mysqli_fetch_assoc($result)) {
 
                                 function drawChart() {
                                     var data = google.visualization.arrayToDataTable([
-                                        ['Year', 'Sales', 'Expenses', 'Profit'],
-                                        ['2014', 1000, 400, 200],
-                                        ['2015', 1170, 460, 250],
-                                        ['2016', 660, 1120, 300],
-                                        ['2017', 1030, 540, 350]
+                                        ['Data', 'Count'],
+
+                                        <?php
+                                        $element_text = ['Active Post', 'Draft Post', 'Users ', 'Comments', 'Draft Comment', 'Categories'];
+                                        $element_count = [$post_count, $draftpost_count, $users_count, $comment_count, $draftcomment_count, $categories_count];
+
+                                        for ($i = 0; $i < 6; $i++) {
+                                            echo "['{$element_text[$i]}'" . "," . "{$element_count[$i]}],";
+                                        }
+                                        ?>
                                     ]);
 
                                     var options = {
                                         chart: {
-                                            title: 'Company Performance',
-                                            subtitle: 'Sales, Expenses, and Profit: 2014-2017',
+                                            title: '',
+                                            subtitle: '',
                                         }
                                     };
 
@@ -196,7 +215,7 @@ while ($row = mysqli_fetch_assoc($result)) {
                                 }
                             </script>
 
-                            <div id="columnchart_material" style="width: 800px; height: 500px;"></div>
+                            <div id="columnchart_material" style="width: 'auto'; height: 500px;"></div>
 
                         </div>
 
