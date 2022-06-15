@@ -419,10 +419,6 @@ function changeRole()
     }
   }
 }
-function editUser()
-{
-  global $conn;
-}
 
 function saveProfile()
 {
