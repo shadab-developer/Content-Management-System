@@ -40,7 +40,7 @@ function postsFetch()
     echo "<img class='img-responsive' src='./images/$post_attachment' alt=''><hr>";
 
     echo "<p>$post_content</p>";
-    echo "<a class='btn btn-primary' href='#'>Read More <span class='glyphicon glyphicon-chevron-right'></span></a>";
+    echo "<a class='btn btn-primary' href='post.php?p_id=$post_id'>Read More <span class='glyphicon glyphicon-chevron-right'></span></a>";
   }
 }
 

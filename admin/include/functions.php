@@ -385,7 +385,7 @@ function insertUser()
   if (!$result) {
     echo mysqli_error($conn);
   } else {
-    echo "Inserted";
+    echo "User created by " . $_SESSION['user_firstname'] . " <a href='users.php'>View Users</a>";
   }
 }
 function changeRole()
