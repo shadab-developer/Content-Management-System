@@ -87,7 +87,7 @@
 
                 <div class="form-group">
                   <label for="post_content">Post content</label>
-                  <textarea name="post_content" id="summernote"> </textarea>
+                  <textarea name="post_content" id="summernote"><?php echo $post_content; ?></textarea>
 
                 </div>
                 <div class="form-group">

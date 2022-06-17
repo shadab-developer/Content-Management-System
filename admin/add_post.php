@@ -69,7 +69,7 @@
 
                 <div class="form-group">
                   <label for="post_content">Post content</label>
-                  <textarea name="post_content" id="summernote" class="form-control"></textarea>
+                  <textarea name="post_content" id="summernote"></textarea>
 
                 </div>
                 <div class="form-group">
