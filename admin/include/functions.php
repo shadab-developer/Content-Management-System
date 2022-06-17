@@ -167,7 +167,7 @@ function insertPost()
   if (!$result) {
     echo "data not inserted" . mysqli_error($conn);
   } else {
-    echo "Post created sucessfully";
+    echo "<p class='bg-success'>Post created sucessfully</p>";
   }
 }
 function deletePost()
@@ -208,7 +208,7 @@ function editPost()
     if (!$result) {
       echo "Post not updated" . mysqli_error($conn);
     } else {
-      echo "post updated";
+      echo "<p class='bg-success'>post updated</p>";
     }
   }
 }
