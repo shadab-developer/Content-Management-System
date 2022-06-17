@@ -69,7 +69,8 @@
 
                 <div class="form-group">
                   <label for="post_content">Post content</label>
-                  <textarea style="height: 300px;" type="text" name="post_content" class="form-control"></textarea>
+                  <textarea name="post_content" id="summernote" class="form-control"></textarea>
+
                 </div>
                 <div class="form-group">
 

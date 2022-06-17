@@ -25,7 +25,7 @@
             <div>
 
               <?php
-              editUser();
+
 
               $user_id = $_GET['edit'];
 

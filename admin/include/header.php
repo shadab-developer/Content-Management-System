@@ -26,13 +26,13 @@ if (!isset($_SESSION['user_role'])) {
   <title>SB Admin - Bootstrap Admin Template</title>
 
   <!-- Bootstrap Core CSS -->
-  <link href="./css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" rel="stylesheet">
 
+  <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
   <!-- Custom CSS -->
   <link href="./css/sb-admin.css" rel="stylesheet">
 
-  <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-
   <!-- Custom Fonts -->
   <link href="./font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
 </head>

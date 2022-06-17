@@ -424,7 +424,6 @@ function saveProfile()
 {
   global $conn, $user_id;
 
-
   $user_image = $_FILES['user_image']['name'];
   $user_image_tmp = $_FILES['user_image']['tmp_name'];
   $user_firstname = $_POST['user_firstname'];
