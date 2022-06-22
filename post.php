@@ -11,7 +11,6 @@
         <div class="row">
 
             <?php
-            session_start();
             $post_id = $_GET['p_id'];
 
             $query = "SELECT * from posts where post_id = $post_id";

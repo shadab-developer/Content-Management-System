@@ -18,7 +18,6 @@ function categoriesFetch()
 
 function postsFetch()
 {
-
   global $conn;
   $query = "SELECT * from posts where post_status = 'Published'";
 
@@ -30,7 +29,7 @@ function postsFetch()
     $post_author = $row['post_author'];
     $post_date = $row['post_date'];
     $post_attachment = $row['post_attachment'];
-    $post_content = substr($row['post_content'], 0, 100);
+    $post_content = substr($row['post_content'], 0, 500);
 
 
     echo "<h2><a href='post.php?p_id=$post_id'>$post_title</a></h2>";
