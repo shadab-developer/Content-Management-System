@@ -101,6 +101,7 @@ function fetchAllPost()
 
 
       echo "<tr>
+      <td><input type='checkbox'></td>
                 <td>$post_title</td>
                 <td>$post_author</td>";
 
@@ -109,6 +110,7 @@ function fetchAllPost()
       $result_categories = mysqli_query($conn, $query1);
 
       while ($row = mysqli_fetch_assoc($result_categories)) {
+
         $cat_title = $row['cat_title'];
         echo "<td>{$cat_title}</td>";
       }
