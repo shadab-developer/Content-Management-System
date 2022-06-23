@@ -105,14 +105,22 @@ function submitComment()
   $author_content = $_POST['comment_content'];
 
 
-  $query = "INSERT into comments(comment_post_id , comment_author , comment_email , comment_content , comment_status , comment_date) VALUES($post_id ,'$author_name' , '$author_email' , '$author_content' , 'UnApproved'  , now() )";
+  if (!empty($author_name) && !empty($author_email) && !empty($author_content)) {
+    $query = "INSERT into comments(comment_post_id , comment_author , comment_email , comment_content , comment_status , comment_date) VALUES($post_id ,'$author_name' , '$author_email' , '$author_content' , 'UnApproved'  , now() )";
 
-  $result = mysqli_query($conn, $query);
+    $result = mysqli_query($conn, $query);
 
-  if (!$result) {
-    echo "Not submited" . mysqli_error($conn);
+    if (!$result) {
+      echo "Not submited" . mysqli_error($conn);
+    }
+  } elseif (empty($author_name)) {
+    echo "Please enter your name";
+  } elseif (empty($author_email)) {
+    echo "Please enter your email";
+  } elseif (empty($author_content)) {
+    echo "Please enter your comment";
   } else {
-    echo "submitted";
+    echo "Please fill all the fields";
   }
 
   $commentCount = "UPDATE posts SET post_comment_count = post_comment_count + 1 where post_id = $post_id";

@@ -70,14 +70,17 @@
                         <div class="form-group">
                             <label for="author_name">Name</label>
                             <input type="text" name="comment_author" class="form-control">
+
                         </div>
                         <div class="form-group">
                             <label for="author_email">Email</label>
                             <input type="email" name="comment_email" class="form-control">
+
                         </div>
                         <div class="form-group">
                             <label for="comment_content">Comments</label>
                             <textarea class="form-control" name="comment_content" rows="3"></textarea>
+
                         </div>
                         <button type="submit" name="submit_comment" class="btn btn-primary">Submit</button>
                     </form>
