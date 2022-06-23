@@ -18,6 +18,7 @@ while ($row = mysqli_fetch_assoc($result)) {
     $user_lastname = $row['user_lastname'];
     $user_image = $row['user_image'];
     $user_email = $row['user_email'];
+    $user_role = $row['user_role'];
     $user_username = $row['user_username'];
     $user_password = $row['user_password'];
 }
@@ -40,7 +41,7 @@ while ($row = mysqli_fetch_assoc($result)) {
                 <div class="row">
                     <div class="col-lg-12">
                         <h1 class="page-header">
-                            Welcome to admin
+                            Welcome to <?php echo $user_role; ?>
                             <small><?php echo $user_username ?></small>
                         </h1>
 

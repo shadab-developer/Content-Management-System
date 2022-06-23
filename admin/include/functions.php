@@ -68,13 +68,21 @@ function editCategory()
 {
   global $conn;
 
+
   if (isset($_GET['edit'])) {
     $cat_id = $_GET['edit'];
+
+    $query = "SELECT * from categories where cat_id = '$cat_id'";
+    $result = mysqli_query($conn, $query);
+    while ($row = mysqli_fetch_assoc($result)) {
+      $cat_id = $row['cat_id'];
+      $cat_title = $row['cat_title'];
+    }
 
     echo "<form action='' method='POST'>
               <div class='form-group'>
                 <label for='cat_title'>Edit Category Title</label>
-                <input type='text' name='cat_title' class='form-control' placeholder='Enter category name'>
+                <input type='text' name='cat_title' class='form-control' value='$cat_title'>
               </div>
               <div class='form-group'>
                 <input class='btn btn-primary' type='submit' name='edit' value='Edit Category'>
@@ -138,7 +146,7 @@ function fetchAllPost()
               <td>$post_tags</td>
               <td>$post_comment_count</td>
               <td>$post_views_count</td>
-              <td><a href='#'>View Post</a></td>
+              <td><a href='../post.php?p_id=$post_id' target='_blank'>View Post</a></td>
               <td><a href='posts.php?delete=$post_id'><i class='fa fa-trash'></i></a>&nbsp;&nbsp;&nbsp;<a href='edit_post.php?edit=$post_id'><i class='fa fa-edit'></i></a></td></tr>";
     }
   }
