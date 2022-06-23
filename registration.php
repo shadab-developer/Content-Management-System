@@ -7,21 +7,7 @@
 
 <?php
 if (isset($_POST['submit'])) {
-    $user_username = mysqli_real_escape_string($conn, $_POST['username']);
-    $user_password = mysqli_real_escape_string($conn, $_POST['password']);
-    $user_email = mysqli_real_escape_string($conn, $_POST['email']);
-
-    if (!empty($user_username) && !empty($user_password) && !empty($user_email)) {
-        $query = "INSERT INTO users (username, password, email) VALUES ('$user_username', '$user_password', '$user_email')";
-        $result = mysqli_query($conn, $query);
-        if ($result) {
-            echo "User created successfully";
-        } else {
-            echo "Error creating user" . mysqli_error($conn);
-        }
-    } else {
-        echo "All fields are required";
-    }
+    registration();
 }
 ?>
 

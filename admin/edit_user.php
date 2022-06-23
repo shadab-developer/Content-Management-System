@@ -96,6 +96,7 @@
                   <select name="user_role" class="form-control">Role
                     <option value="Admin">Admin</option>
                     <option value="Author">Author</option>
+                    <option value="subscriber">Subscriber</option>
                   </select>
 
 
@@ -108,7 +109,7 @@
                 </div>
 
                 <div class="form-group">
-                  <button type="submit" name="edit" class="btn btn-primary">Create User</button>
+                  <button type="submit" name="edit" class="btn btn-primary">Update User</button>
                 </div>
 
               </form>

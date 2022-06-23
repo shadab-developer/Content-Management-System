@@ -127,3 +127,35 @@ function submitComment()
 
   mysqli_query($conn, $commentCount);
 }
+function registration()
+{
+  global $conn;
+  $user_username = mysqli_real_escape_string($conn, $_POST['username']);
+  $user_password = mysqli_real_escape_string($conn, $_POST['password']);
+  $user_email = mysqli_real_escape_string($conn, $_POST['email']);
+
+  $sandQuery = "SELECT randSalt FROM users";
+  $sandResult = mysqli_query($conn, $sandQuery);
+  $row = mysqli_fetch_array($sandResult);
+  $salt = $row['randSalt'];
+  $rand_user_password = crypt($user_password, $salt);
+
+  if (!empty($user_username) && !empty($user_password) && !empty($user_email)) {
+    $query = "INSERT INTO users (user_username,user_password,user_email,user_role) VALUES ('$user_username','$rand_user_password','$user_email','subscriber')";
+
+    $result = mysqli_query($conn, $query);
+    if ($result) {
+      echo "User created successfully";
+    } else {
+      echo "Error creating user" . mysqli_error($conn);
+    }
+  } elseif (!empty($user_username)) {
+    echo "Please enter Username";
+  } elseif (!empty($user_password)) {
+    echo "Please enter password";
+  } elseif (!empty($user_email)) {
+    echo "Please enter email";
+  } else {
+    echo "Please enter all fields";
+  }
+}

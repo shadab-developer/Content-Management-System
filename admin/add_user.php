@@ -60,6 +60,7 @@
                   <select name="user_role" class="form-control">Role
                     <option value="Admin">Admin</option>
                     <option value="Author">Author</option>
+                    <option value="Subscriber">Subscriber</option>
                   </select>
 
 
