@@ -21,6 +21,22 @@ function fetchCategories()
 ";
   }
 }
+function fetchAuthor()
+{
+  global $conn;
+
+  $query = "SELECT * FROM users where user_role = 'author'";
+  $result = mysqli_query($conn, $query);
+
+  while ($row = mysqli_fetch_assoc($result)) {
+    $username = $row['user_username'];
+    $user_firstname = $row['user_firstname'];
+    $user_lastname = $row['user_lastname'];
+    $user_email = $row['user_email'];
+
+    echo "<option value='$user_firstname $user_lastname'>$username :: $user_email</option>";
+  }
+}
 
 function insertCategory()
 {
@@ -101,7 +117,7 @@ function fetchAllPost()
 
 
       echo "<tr>
-      <td><input type='checkbox'></td>
+      <td><input class='selectBoxes' type='checkbox' name='checkBoxArray[]' value='$post_id'></td>
                 <td>$post_title</td>
                 <td>$post_author</td>";
 

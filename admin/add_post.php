@@ -56,7 +56,11 @@
                 </div>
                 <div class="form-group">
                   <label for="post_author">Post Author</label>
-                  <input type="text" name="post_author" class="form-control">
+                  <select name="post_author" class="form-control">
+
+                    <?php fetchAuthor(); ?>
+
+                  </select>
                 </div>
                 <div class="form-group">
                   <label for="post_attachment">Image</label>
