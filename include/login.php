@@ -6,8 +6,6 @@ if (isset($_POST['login'])) {
   $username = mysqli_real_escape_string($conn, $_POST['username']);
   $password = mysqli_real_escape_string($conn, $_POST['password']);
 
-
-
   $query = "SELECT * from users where user_username = '$username'";
 
 
@@ -26,7 +24,12 @@ if (isset($_POST['login'])) {
     $user_role = $row['user_role'];
     $user_image = $row['user_image'];
   }
-  if ($username !== $db_username && $password  !== $db_password) {
+
+  echo $rand_user_password = crypt($password, $db_password);
+
+
+
+  if ($username !== $db_username && $rand_user_password  !== $db_password) {
     header("Location: ../index.php");
   } else if ($username == $db_username && $password  == $db_password) {
 
