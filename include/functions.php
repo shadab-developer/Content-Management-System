@@ -124,6 +124,13 @@ function submitComment()
   $commentCount = "UPDATE posts SET post_comment_count = post_comment_count + 1 where post_id = $post_id";
 
   mysqli_query($conn, $commentCount);
+
+  if (!$result) {
+    echo "Not submited" . mysqli_error($conn);
+  } else {
+    header("Location: post.php?p_id=$post_id");
+    die();
+  }
 }
 function registration()
 {

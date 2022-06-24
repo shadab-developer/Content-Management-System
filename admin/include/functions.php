@@ -146,6 +146,7 @@ function fetchAllPost()
               <td>$post_tags</td>
               <td>$post_comment_count</td>
               <td>$post_views_count</td>
+              <td><a href='posts.php?reset_views=$post_id'>Reset Views</a></td>
               <td><a href='../post.php?p_id=$post_id' target='_blank'>View Post</a></td>
               <td><a onclick=\"javascript: return confirm('Are you sure you want to delete ?');\" href='posts.php?delete=$post_id'><i class='fa fa-trash'></i></a>&nbsp;&nbsp;&nbsp;<a href='edit_post.php?edit=$post_id'><i class='fa fa-edit'></i></a></td></tr>";
     }
@@ -497,6 +498,21 @@ function saveSecurity()
     echo mysqli_error($conn);
   } else {
     header("Location: profile.php");
+    die();
+  }
+}
+function resetViews()
+{
+  global $conn;
+  $post_id = $_GET['reset_views'];
+
+  $query = "UPDATE posts set post_views_count = 0 where post_id = $post_id";
+  $result = mysqli_query($conn, $query);
+
+  if (!$result) {
+    echo mysqli_error($conn);
+  } else {
+    header("Location: posts.php");
     die();
   }
 }

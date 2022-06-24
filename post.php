@@ -13,6 +13,9 @@
             <?php
             $post_id = $_GET['p_id'];
 
+            $view_query = "UPDATE posts SET post_views_count = post_views_count + 1 WHERE post_id = $post_id";
+            $send_query = mysqli_query($conn, $view_query);
+
             $query = "SELECT * from posts where post_id = $post_id";
 
             $result = mysqli_query($conn, $query);

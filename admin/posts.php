@@ -94,6 +94,15 @@
                     die("Query Failed" . mysqli_error($conn));
                   }
                   break;
+
+                case 'reset-views':
+                  $query = "UPDATE posts set post_views_count = 0 where post_id = $checkBoxValue";
+                  $result = mysqli_query($conn, $query);
+
+                  if (!$result) {
+                    echo mysqli_error($conn);
+                  }
+                  break;
               }
             }
           }
@@ -109,6 +118,7 @@
                     <option value="delete">Delete</option>
                     <option value="published">Publish</option>
                     <option value="draft">Draft</option>
+                    <option value="reset-views">Reset Views</option>
 
                   </select>
                 </div>
@@ -129,6 +139,7 @@
                   <th scope="col">Tags</th>
                   <th scope="col">Comments</th>
                   <th scope="col">Post Views</th>
+                  <th scope="col">Reset Views</th>
                   <th scope="col">View Post</th>
                   <th scope="col">Option</th>
 
@@ -141,6 +152,8 @@
                 fetchAllPost();
                 if (isset($_GET['delete'])) {
                   deletePost();
+                } elseif (isset($_GET['reset_views'])) {
+                  resetViews();
                 }
 
                 ?>
