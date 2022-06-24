@@ -130,6 +130,7 @@ function submitComment()
 function registration()
 {
   global $conn;
+
   $user_username = mysqli_real_escape_string($conn, $_POST['username']);
   $user_password = mysqli_real_escape_string($conn, $_POST['password']);
   $user_email = mysqli_real_escape_string($conn, $_POST['email']);
