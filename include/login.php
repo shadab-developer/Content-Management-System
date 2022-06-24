@@ -25,13 +25,13 @@ if (isset($_POST['login'])) {
     $user_image = $row['user_image'];
   }
 
-  echo $rand_user_password = crypt($password, $db_password);
+  echo $password = crypt($password, $db_password);
 
 
 
-  if ($username !== $db_username && $rand_user_password  !== $db_password) {
+  if ($username !== $db_username && $password  !== $db_password) {
     header("Location: ../index.php");
-  } else if ($username == $db_username && $password  == $db_password) {
+  } else if ($username == $db_username && $password  == $db_password && $user_role == 'Admin') {
 
     $_SESSION['user_username'] = $db_username;
     $_SESSION['user_id'] = $user_id;

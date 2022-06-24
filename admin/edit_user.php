@@ -51,11 +51,19 @@
                 $user_role = $_POST['user_role'];
                 $user_image = $_FILES['user_image']['name'];
                 $user_image_tmp = $_FILES['user_image']['tmp_name'];
+                $user_password = $_POST['user_password'];
+
+                $sandQuery = "SELECT randSalt FROM users";
+                $sandResult = mysqli_query($conn, $sandQuery);
+                $row = mysqli_fetch_array($sandResult);
+                $salt = $row['randSalt'];
+                $rand_user_password = crypt($user_password, $salt);
+
 
                 move_uploaded_file($user_image_tmp, "../images/$user_image");
 
 
-                $query = "UPDATE users set user_username = '$username',user_firstname = '$user_firstname',user_lastname = '$user_lastname',user_email = '$user_email',user_role = '$user_role',user_image = '$user_image' where user_id = $user_id";
+                $query = "UPDATE users set user_password = '$rand_user_password',user_username = '$username',user_firstname = '$user_firstname',user_lastname = '$user_lastname',user_email = '$user_email',user_role = '$user_role',user_image = '$user_image' where user_id = $user_id";
 
                 $result = mysqli_query($conn, $query);
 
@@ -106,6 +114,11 @@
                   <label for="username">Image</label>
                   <input type="file" name="user_image" class="form-control">
                   <img width="250" class='img-thumbnail' src='../images/<?php echo $user_image; ?>'>
+                </div>
+
+                <div class="form-group">
+                  <label for="password">Password</label>
+                  <input type="password" name="user_password" class="form-control">
                 </div>
 
                 <div class="form-group">
