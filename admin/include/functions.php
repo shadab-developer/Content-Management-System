@@ -16,7 +16,7 @@ function fetchCategories()
         <tr>
           <th scope='row'>$cat_id</th>
           <td>$cat_title</td>
-          <td><a href='categories.php?delete=$cat_id'><i class='fa fa-trash'></i></a>&nbsp;&nbsp;&nbsp;<a href='categories.php?edit=$cat_id'><i class='fa fa-edit'></i></a></td>
+          <td><a onclick=\"javascript: return confirm('Are you sure you want to delete ?');\" href='categories.php?delete=$cat_id'><i class='fa fa-trash'></i></a>&nbsp;&nbsp;&nbsp;<a href='categories.php?edit=$cat_id'><i class='fa fa-edit'></i></a></td>
         </tr>
 ";
   }
@@ -25,7 +25,7 @@ function fetchAuthor()
 {
   global $conn;
 
-  $query = "SELECT * FROM users where user_role = 'author'";
+  $query = "SELECT * FROM users where user_role = 'author' OR user_role = 'admin'";
   $result = mysqli_query($conn, $query);
 
   while ($row = mysqli_fetch_assoc($result)) {
@@ -147,7 +147,7 @@ function fetchAllPost()
               <td>$post_comment_count</td>
               <td>$post_views_count</td>
               <td><a href='../post.php?p_id=$post_id' target='_blank'>View Post</a></td>
-              <td><a href='posts.php?delete=$post_id'><i class='fa fa-trash'></i></a>&nbsp;&nbsp;&nbsp;<a href='edit_post.php?edit=$post_id'><i class='fa fa-edit'></i></a></td></tr>";
+              <td><a onclick=\"javascript: return confirm('Are you sure you want to delete ?');\" href='posts.php?delete=$post_id'><i class='fa fa-trash'></i></a>&nbsp;&nbsp;&nbsp;<a href='edit_post.php?edit=$post_id'><i class='fa fa-edit'></i></a></td></tr>";
     }
   }
 }
@@ -274,7 +274,7 @@ function fetchAllComment()
               <td>$comment_date</td>
               <td><a href='comments.php?approve=$comment_id''>Approve</a></td>
               <td><a href='comments.php?unapprove=$comment_id'>Unapprove</a></td>
-              <td><a href='comments.php?delete=$comment_id'><i class='fa fa-trash'></i></a></td>
+              <td><a onclick=\"javascript: return confirm('Are you sure you want to delete ?');\" href='comments.php?delete=$comment_id'><i class='fa fa-trash'></i></a></td>
               </tr>";
     }
   }
@@ -363,7 +363,7 @@ function fetchUser()
 
                 <td><a href='users.php?change_to_admin=$user_id'>Change to admin</td>
                 <td><a href='users.php?change_to_author=$user_id'>Change to author</td>
-                <td><a href='users.php?delete=$user_id'><i class='fa fa-trash'></i></a>&nbsp;&nbsp;&nbsp;<a href='edit_user.php?edit=$user_id'><i class='fa fa-edit'></i></a></td>
+                <td><a onclick=\"javascript: return confirm('Are you sure you want to delete ?');\" href='users.php?delete=$user_id'><i class='fa fa-trash'></i></a>&nbsp;&nbsp;&nbsp;<a href='edit_user.php?edit=$user_id'><i class='fa fa-edit'></i></a></td>
               </tr>
                   ";
     }
