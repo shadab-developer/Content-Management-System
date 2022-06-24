@@ -40,7 +40,7 @@ if (isset($_POST['login'])) {
     $_SESSION['user_role'] = $user_role;
     $_SESSION['user_image'] = $user_image;
 
-    header("Location: ../admin");
+    header("Location: ../index.php");
   } else {
     header("Location: ../index.php");
   }
