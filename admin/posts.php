@@ -59,6 +59,41 @@
                     die("Query Failed" . mysqli_error($conn));
                   }
                   break;
+
+                case 'clone':
+                  $query = "SELECT * from posts WHERE post_id = $checkBoxValue";
+
+                  $result = mysqli_query($conn, $query);
+
+                  while ($row = mysqli_fetch_assoc($result)) {
+                    $post_title = $row['post_title'];
+                    $post_author = $row['post_author'];
+                    $post_category_id = $row['post_category_id'];
+                    $post_date = $row['post_date'];
+                    $post_attachment = $row['post_attachment'];
+                    $post_status = $row['post_status'];
+                    $post_tags = $row['post_tags'];
+                    $post_content = $row['post_content'];
+                    $post_comment_count = $row['post_comment_count'];
+                    $post_views_count = $row['post_views_count'];
+
+                    $queryClone = "INSERT into posts(post_title,post_comment_count, post_views_count , post_category_id ,post_date, post_status , post_author , post_attachment , post_tags , post_content)" .
+                      "VALUES('$post_title',0 , $post_views_count,$post_category_id,now(),'draft','$post_author','$post_attachment','$post_tags','$post_content')";
+
+                    $resultClone = mysqli_query($conn, $queryClone);
+
+                    if (!$resultClone) {
+                      echo "data not inserted" . mysqli_error($conn);
+                    } else {
+                      echo "<p class='bg-success'>Post cloned sucessfully</p>";
+                    }
+                  }
+
+
+                  if (!$result) {
+                    die("Query Failed" . mysqli_error($conn));
+                  }
+                  break;
               }
             }
           }
@@ -70,6 +105,7 @@
                 <div class="col-xs-4">
                   <select name="bulkOptions" class="form-control">
                     <option value="">Select Options</option>
+                    <option value="clone">Clone</option>
                     <option value="delete">Delete</option>
                     <option value="published">Publish</option>
                     <option value="draft">Draft</option>
