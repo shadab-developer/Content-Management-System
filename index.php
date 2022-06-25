@@ -40,7 +40,20 @@
 
         </div>
         <!-- /.row -->
-
         <hr>
+
+        <ul class="pager">
+            <?php
+
+            for ($i = 1; $i <= $count; $i++) {
+                if ($i == $page) {
+                    echo "<li ><a class='active-link' href='index.php?page=$i'>$i</a></li>";
+                } else {
+                    echo "<li><a href='index.php?page=$i'>$i</a></li>";
+                }
+            }
+            ?>
+        </ul>
+
 
         <?php include 'include/footer.php'; ?>

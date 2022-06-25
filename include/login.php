@@ -25,7 +25,7 @@ if (isset($_POST['login'])) {
     $user_image = $row['user_image'];
   }
 
-  echo $password = crypt($password, $db_password);
+  $password = crypt($password, $db_password);
 
 
 
