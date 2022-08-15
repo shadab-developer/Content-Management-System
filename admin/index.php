@@ -25,27 +25,6 @@ while ($row = mysqli_fetch_assoc($result)) {
 
 
 
-$session = session_id();
-$time = time();
-$time_out_in_seconds = 60;
-$time_out = $time - $time_out_in_seconds;
-
-
-$query_user_online = "SELECT * from users_online where session = '$session'";
-$result_user_online = mysqli_query($conn, $query_user_online);
-
-$count_online = mysqli_num_rows($result_user_online);
-
-if ($count_online == NULL) {
-    mysqli_query($conn, "INSERT into users_online(session, time) VALUES('$session', '$time')");
-} else {
-    mysqli_query($conn, "UPDATE users_online SET time = '$time' WHERE session = '$session'");
-}
-
-
-$user_online_query = "SELECT * from users_online where time > '$time_out'";
-$user_online_result = mysqli_query($conn, $user_online_query);
-$count_user_online = mysqli_num_rows($user_online_result);
 
 
 ?>
