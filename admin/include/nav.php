@@ -36,7 +36,9 @@ while ($row = mysqli_fetch_assoc($result)) {
   <!-- Top Menu Items -->
   <ul class="nav navbar-right top-nav">
     <li>
-      <a href="#"><i class="fa fa-fw fa-user"></i> Online User : <?php user_online() ?></a>
+      <!-- <a href="#"><i class="fa fa-fw fa-user"></i> Online User : <?php user_online() ?></a> -->
+      <a href="#"><i class="fa fa-fw fa-user"></i> Online User : <span class="usersonline"></span></a>
+
     </li>
     <li class="dropdown">
       <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> <?php echo $user_firstname . '&nbsp;' . $user_lastname ?> <b class="caret"></b></a>
