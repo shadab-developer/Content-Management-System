@@ -24,8 +24,10 @@ $("#load-screen")
   });
 
 function loadUsersOnline() {
-  $.get("functions.php?onlineusers=result", function (data) {
+  $.get("./include/functions.php?onlineusers=result", function (data) {
     $(".usersonline").text(data);
   });
 }
-loadUsersOnline();
+setInterval(function () {
+  loadUsersOnline();
+}, 500);

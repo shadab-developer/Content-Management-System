@@ -518,28 +518,36 @@ function resetViews()
 }
 function user_online()
 {
-  global $conn;
-  $session = session_id();
-  $time = time();
-  $time_out_in_seconds = 30;
-  $time_out = $time - $time_out_in_seconds;
+  if (isset($_GET['onlineusers'])) {
+
+    global $conn;
+    if (!$conn) {
+      session_start();
+      include '../../include/config.php';
+
+      $session = session_id();
+      $time = time();
+      $time_out_in_seconds = 30;
+      $time_out = $time - $time_out_in_seconds;
 
 
-  $query_user_online = "SELECT * from users_online where session = '$session'";
-  $result_user_online = mysqli_query($conn, $query_user_online);
+      $query_user_online = "SELECT * from users_online where session = '$session'";
+      $result_user_online = mysqli_query($conn, $query_user_online);
 
-  $count_online = mysqli_num_rows($result_user_online);
+      $count_online = mysqli_num_rows($result_user_online);
 
-  if ($count_online == NULL) {
-    mysqli_query($conn, "INSERT into users_online(session, time) VALUES('$session', '$time')");
-  } else {
-    mysqli_query($conn, "UPDATE users_online SET time = '$time' WHERE session = '$session'");
-  }
+      if ($count_online == NULL) {
+        mysqli_query($conn, "INSERT into users_online(session, time) VALUES('$session', '$time')");
+      } else {
+        mysqli_query($conn, "UPDATE users_online SET time = '$time' WHERE session = '$session'");
+      }
 
 
-  $user_online_query = "SELECT * from users_online where time > '$time_out'";
-  $user_online_result = mysqli_query($conn, $user_online_query);
-  $count_user_online = mysqli_num_rows($user_online_result);
+      $user_online_query = "SELECT * from users_online where time > '$time_out'";
+      $user_online_result = mysqli_query($conn, $user_online_query);
+      echo $count_user_online = mysqli_num_rows($user_online_result);
+    }
+  } // Get request isset onlineusers
 
-  echo $count_user_online;
 }
+user_online();
