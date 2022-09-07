@@ -25,13 +25,13 @@ if (isset($_POST['login'])) {
     $user_image = $row['user_image'];
   }
 
-  $password = crypt($password, $db_password);
+  // $password = crypt($password, $db_password);
 
 
-
-  if ($username !== $db_username && $password  !== $db_password) {
+  if ($user_role != "Admin") {
+    $_SESSION['error_msg'] = "You are not authorized to login as subscriber ! Please contact <a href='mailto:shadab@webyroot.com'>Super Admin</a>";
     header("Location: ../index.php");
-  } else if ($username == $db_username && $password  == $db_password && $user_role == 'Admin') {
+  } elseif (password_verify($password, $db_password) && $user_role == "Admin") {
 
     $_SESSION['user_username'] = $db_username;
     $_SESSION['user_id'] = $user_id;
@@ -39,8 +39,7 @@ if (isset($_POST['login'])) {
     $_SESSION['user_lastname'] = $lastname;
     $_SESSION['user_role'] = $user_role;
     $_SESSION['user_image'] = $user_image;
-
-    header("Location: ../index.php");
+    header("Location: ../admin");
   } else {
     header("Location: ../index.php");
   }

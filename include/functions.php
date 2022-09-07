@@ -121,13 +121,9 @@ function registration()
   $user_email = mysqli_real_escape_string($conn, $_POST['email']);
 
 
-  $password = password_hash('$user_password', PASSWORD_BCRYPT, array('cost' => 12));
+  $password = password_hash($user_password, PASSWORD_BCRYPT, array('cost' => 12));
 
-  // $sandQuery = "SELECT randSalt FROM users";
-  // $sandResult = mysqli_query($conn, $sandQuery);
-  // $row = mysqli_fetch_array($sandResult);
-  // $salt = $row['randSalt'];
-  // $rand_user_password = crypt($user_password, $salt);
+
 
   if (!empty($user_username) && !empty($user_password) && !empty($user_email)) {
     $query = "INSERT INTO users (user_username,user_password,user_email,user_role) VALUES ('$user_username','$password','$user_email','subscriber')";

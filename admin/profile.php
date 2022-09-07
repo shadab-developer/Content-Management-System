@@ -85,7 +85,7 @@
                     </div>
                     <form action="" method="POST">
                       <div class="col-md-12"><label class="labels">UserName</label><input type="text" class="form-control" name="user_username" value="<?php echo $user_username ?>"></div> <br>
-                      <div class="col-md-12"><label class="labels">Password</label><input type="password" class="form-control" name="user_password" value="<?php echo $user_password ?>"></div>
+                      <div class="col-md-12"><label class="labels">Password</label><input type="password" class="form-control" name="user_password"></div>
 
                   </div>
                   <div class="row mt-3">

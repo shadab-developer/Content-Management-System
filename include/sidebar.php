@@ -28,6 +28,28 @@
     if (isset($_SESSION['user_role'])) {
       echo "<p>Logged in as <b>{$_SESSION['user_username']}</b></p>";
       echo "<p><a class='btn btn-primary' href='./admin/include/logout.php'>Logout</a></p>";
+    } elseif (isset($_SESSION['error_msg'])) {
+      echo "<p class='text-danger'>{$_SESSION['error_msg']}</p>";
+      unset($_SESSION['error_msg']);
+      echo "
+      <h4>Login</h4>
+      <form action='include/login.php' method='POST'>
+      <div class='form-group'>
+        <label for='username'>Username</label>
+        <input type='text' name='username' class='form-control'>
+      </div>
+
+      <div class='form-group'>
+        <label for='password'>Password</label>
+        <input type='password' name='password' class='form-control'>
+      </div>
+
+      <div class='form-group'>
+        <button class='btn btn-primary' type='submit' name='login'>Login</button>
+      </div>
+
+    </form>
+      ";
     } else {
       echo "
       <h4>Login</h4>
