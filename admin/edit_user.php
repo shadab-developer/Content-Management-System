@@ -10,7 +10,6 @@
     <?php include 'include/nav.php'; ?>
     <!-- Navigation End Here -->
 
-
     <div id="page-wrapper">
 
       <div class="container-fluid">
@@ -26,9 +25,7 @@
 
               <?php
 
-
               $user_id = $_GET['edit'];
-
 
               $query = "SELECT * from users where user_id = $user_id";
 
@@ -53,20 +50,13 @@
                 $user_image_tmp = $_FILES['user_image']['tmp_name'];
                 $user_password = $_POST['user_password'];
 
-                $sandQuery = "SELECT randSalt FROM users";
-                $sandResult = mysqli_query($conn, $sandQuery);
-                $row = mysqli_fetch_array($sandResult);
-                $salt = $row['randSalt'];
-                $rand_user_password = crypt($user_password, $salt);
-
+                $password = password_hash($user_password, PASSWORD_BCRYPT, array('cost' => 12));
 
                 move_uploaded_file($user_image_tmp, "../images/$user_image");
 
-
-                $query = "UPDATE users set user_password = '$rand_user_password',user_username = '$username',user_firstname = '$user_firstname',user_lastname = '$user_lastname',user_email = '$user_email',user_role = '$user_role',user_image = '$user_image' where user_id = $user_id";
+                $query = "UPDATE users set user_password = '$password',user_username = '$username',user_firstname = '$user_firstname',user_lastname = '$user_lastname',user_email = '$user_email',user_role = '$user_role',user_image = '$user_image' where user_id = $user_id";
 
                 $result = mysqli_query($conn, $query);
-
 
                 if (!$result) {
                   echo mysqli_error($conn);
@@ -75,7 +65,6 @@
                   die();
                 }
               }
-
 
               ?>
               <form action="" method="POST" enctype="multipart/form-data">
